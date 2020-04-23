@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "customnav": "/components/nav/nav"
+  },
+  "navigationBarTitleText": ""
+}

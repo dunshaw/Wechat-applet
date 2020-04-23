@@ -1,0 +1,16 @@
+<!--pages/personAdvantage/personAdvantage.wxml-->
+<view class='workDescribe'>
+  <view class='textareaShell'>
+    <view class='textView'>
+      <textarea class='textStyle' placeholder="亮出自己的个人优势，更能获得HR的青睐哦~" placeholder-class="textTitle" maxlength="150" bindinput="countNub" value="{{textContent}}"/>
+      <view class='textareaNub'>{{textareaNub}}/150字</view>
+    </view>
+  </view>
+  <view class='seeOther'>
+    <view class='seeOtherTitle'>{{content.positionName}}<text class='changeOne' bindtap='changeOne'>换一个</text></view>
+    <view class='otherConShell' bindtap="copy">
+      <text class='otherCon'>{{content.content}}</text>
+    </view>
+  </view>
+</view>
+<view class='submitForm' bindtap='submitForm'>提交</view>

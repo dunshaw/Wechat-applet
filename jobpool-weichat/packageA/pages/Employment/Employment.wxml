@@ -1,0 +1,17 @@
+<!--pages/Employment/Employment.wxml-->
+<view class='Shell'>
+  <view class="item">
+    <text>是否至少与一家单位建立了劳动关系？</text>
+    <switch checked="{{existLaborRelationship}}" data-info="exist" bindchange="changeSwitch" />
+  </view>
+  <view class="item" wx:if='{{existLaborRelationship}}'>
+    <text>是否已签署劳动合同？</text>
+    <switch checked="{{signedLaborContract}}" data-info="contract" bindchange="changeSwitch" />
+  </view>
+  <view class="item last-item" wx:if='{{existLaborRelationship}}'>
+    <text>是否已缴纳社保？</text>
+    <switch checked="{{payedSocialSecurity}}" data-info="security" bindchange="changeSwitch" />
+  </view>
+
+  <view class='submitForm' bindtap='submitForm'>提交</view>
+</view>

@@ -1,0 +1,74 @@
+<!--pages/educationExp/educationExp.wxml-->
+<view class='Shell'>
+  <view class='nameModel'>
+    <view class='important'>*</view>
+    <view class='nameTitle'>学校</view>
+    <view class='nameView'><input class='inputName' type='text' placeholder='请填写' placeholder-class="placeholder" value="{{schoolName}}" bindinput='inputUserName'></input></view>
+  </view>
+  <view class='nameModel'>
+    <view class='important'>*</view>
+    <view class='nameTitle'>专业</view>
+    <view class='nameView'><input class='inputName' type='text' placeholder='请填写' placeholder-class="placeholder" value="{{major}}" bindinput='inputMajor'></input></view>
+  </view>
+  <view class='genderModel'>
+    <view class='important'>*</view>
+    <view class='genderTitle'>学历</view>
+    <view class='genderView {{Education == "请选择"?"notChoice":""}}' bindtap='openEdu'>{{Education}}<text class='fa fa-angle-right'></text></view>
+  </view>
+  <view class='genderModel'>
+    <view class='important'>*</view>
+    <view class='genderTitle'>入学时间</view>
+    <view class='genderView {{goSchoolTime == "请选择"?"notChoice":""}}' bindtap='openGoTime'>{{goSchoolTime}}<text class='fa fa-angle-right'></text></view>
+  </view>
+  <view class='genderModel'>
+    <view class='important'>*</view>
+    <view class='genderTitle'>毕业时间</view>
+    <view class='genderView {{outSchoolTime == "请选择"?"notChoice":""}}' bindtap='openOutTime'>{{outSchoolTime}}<text class='fa fa-angle-right'></text></view>
+  </view>
+</view>
+
+<view class='submitForm' bindtap='submitForm'>提交</view>
+<view class="del" bindtap="del" wx:if="{{ id }}">删除</view>
+
+<!--学历展示-->
+<view class='address-mask animated fadeIn' wx:if="{{showEdu}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureEduValue}}" bindchange="bindChangeEdu">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openEdu_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openEdu_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{educationList}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+<!--入学时间展示-->
+<view class='address-mask animated fadeIn' wx:if="{{showGoTime}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureGoValue}}" bindchange="bindChangeGoTime">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openGoTime_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openGoTime_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{year}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{month}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+<!--毕业时间展示-->
+<view class='address-mask animated fadeIn' wx:if="{{showOutTime}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureOutValue}}" bindchange="bindChangeOutTime">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openOutTime_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openOutTime_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{year}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{month}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>

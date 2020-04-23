@@ -1,0 +1,263 @@
+/* pages/workExp/workExp.wxss */
+page{
+  background-color: #f5f5f5;
+}
+.Shell{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.nameModel{
+  width: 100%;
+  height: 134rpx;
+  overflow: hidden;
+  margin: 0;
+  padding: 40rpx 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ddd;
+}
+.genderModel{
+  width: 100%;
+  height: 112rpx;
+  overflow: hidden;
+  margin: 0;
+  padding: 40rpx 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ddd;
+}
+.genderModel:last-child{
+  border: none;
+}
+.important{
+  width: 20rpx;
+  height: 32rpx;
+  font-size: 32rpx;
+  color: #FF4C4C;
+  line-height: 32rpx;
+  margin: 18rpx 5rpx 0 0;
+  padding: 0;
+  text-align: left;
+  float: left;
+}
+.genderModel .important{
+  margin-top: 6rpx;
+}
+.nameTitle{
+  width: 200rpx;
+  height: 54rpx;
+  margin: 0 20rpx 0 0;
+  padding: 0;
+  font-size: 32rpx;
+  line-height: 54rpx;
+  color: #333;
+  text-align: left;
+  float: left;
+}
+.genderTitle{
+  width: 200rpx;
+  height: 32rpx;
+  margin: 0 20rpx 0 0;
+  padding: 0;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #333;
+  text-align: left;
+  float: left;
+}
+.nameView{
+  width: 445rpx;
+  height: 54rpx;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  float: right;
+}
+.genderView{
+  width: 445rpx;
+  height: 32rpx;
+  font-size: 32rpx;
+  color: #666;
+  line-height: 32rpx;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  float: right;
+}
+.notChoice{
+  color: #999;
+}
+.genderView>.fa{
+  margin-left: 15rpx;
+  color: #999;
+  font-size: 32rpx;
+  line-height: 32rpx;
+}
+.inputName{
+  width: 100%;
+  height: 54rpx;
+  font-size: 32rpx;
+  color: #666;
+  line-height: 54rpx;
+  margin: 0;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.placeholder{
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #999;
+}
+
+.workDescribe,.textView{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.describeTitle{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 28rpx;
+}
+.textareaShell{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+  background:#fff;
+}
+.textStyle{
+  width: 100%;
+  height: 400rpx;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  line-height: 38rpx;
+  color: #666;
+  border-bottom: 1px solid #ddd;
+}
+.textTitle{
+  font-size: 28rpx;
+  color: #999;
+  line-height: 28rpx;
+}
+.textareaNub{
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 30rpx;
+}
+.seeOther{
+  width: 100%;
+  overflow: hidden;
+  margin: 0 0 50rpx 0;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  background:#fff;
+}
+.seeOtherTitle{
+  font-size: 28rpx;
+  color: #333;
+  line-height: 28rpx;
+}
+.changeOne{
+  color: #2EA7E0;
+  float: right;
+}
+.otherConShell{
+  width: 100%;
+  overflow: hidden;
+  margin: 30rpx 0 0 0;
+  padding: 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.otherCon{
+  font-size: 28rpx;
+  color: #999;
+  line-height: 38rpx;
+}
+.hide{
+  color: rgba(0, 0, 0, 0);
+  height: 0
+}
+
+
+
+/*选择地址*/
+.address-mask{
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 98;
+  position: fixed;
+}
+.picker-view{
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  bottom: 0;
+  z-index: 9999;
+  background: #fff;
+}
+.operation{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  position: absolute;
+  z-index: 99;
+  box-sizing: border-box;
+  background: #fff;
+}
+.operation .cancel-btn{
+  color: #999;
+}
+.operation .comfirm-btn{
+  color: goldenrod;
+  float: right;
+}
+.item-column{
+  line-height: 50px;
+  font-size: 26rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.submitForm{
+  width: 690rpx;
+  height: 80rpx;
+  margin: 30rpx;
+  padding: 0;
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #2EA7E0;
+  border-radius: 10rpx;
+}
+.del{
+  width: 690rpx;
+  height: 80rpx;
+  margin: 30rpx;
+  font-size: 32rpx;
+  color: #FF4C4C;
+  line-height: 80rpx;
+  text-align: center;
+  background: white;
+  border-radius: 10rpx;
+}

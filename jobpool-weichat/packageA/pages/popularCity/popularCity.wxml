@@ -1,0 +1,34 @@
+<!--pages/popularCity.wxml-->
+<view class="dingweicity-box">
+  <text class="dingweicity-text">定位城市</text>
+  <view class="dingweicity-position-box">
+    <view class="current-dingweicity" data-code="{{cityCode}}" data-cityname="{{city}}" bindtap="choicecity">
+      <image src="../../../images/dingwei.png" mode="aspectFit"></image>
+      {{city}}
+    </view>
+    <view class="again-position" bindtap="aginlocaltion">
+      <image src="../../../images/shuaxin.png" mode="aspectFit"></image>
+      重新定位
+    </view>
+  </view>
+</view>
+<view class="popularcity-bigbox">
+  <text class="popularcity-bigbox-text">热门城市</text>
+  <view class="popularcity-box">
+    <view class="popularcity" wx:for="{{hotcity}}" wx:key="index" data-code="{{item.code}}" data-cityname="{{item.name}}" bindtap="choicecity">{{ item.name }}</view>
+  </view>
+</view>
+<view class="fengexian"></view>
+
+<view class="q-selecity">
+  <scroll-view scroll-y="true" style="height:{{h + 'px'}}" scroll-with-animation="true" enable-back-to-top="true" scroll-into-view="{{seehearid}}" class="q-scrollh" scroll-anchoring="true">
+    <view class="q-citybox" wx:for="{{ label }}" id="{{item}}" wx:key="index">
+      <view class="q-cityInitials">{{ item }}</view>
+      <view class="q-cityname" wx:for="{{cityData}}" wx:key="index" wx:for-item="cell" wx:if="{{ cell.pinyin == item }}" bindtap="choicecity" data-code="{{cell.code}}" data-cityname="{{cell.name}}">{{cell.name}}</view>
+      <view class="fengexian"></view>
+    </view>
+  </scroll-view>
+</view>
+<view class="q-right-letter">
+  <view wx:for="{{ label }}" wx:key="index" bindtap="seehear" data-id="{{item}}">{{item}}</view>
+</view>

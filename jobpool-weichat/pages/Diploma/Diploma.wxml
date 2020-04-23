@@ -1,0 +1,41 @@
+<!--pages/Diploma/Diploma.wxml-->
+<view class='diplomaTitle' wx:if="{{ degStatus == 'uncertified' }}" >认证学历，更能提高面试通过率~</view>
+<view class='diplomaImg' bindtap='chooseImage' wx:if="{{ degStatus == 'uncertified' }}"><image class='diplomaMask' src='{{diplomaImg == null?"../../images/diploma.png":imgIp + diplomaImg}}'></image></view>
+<!-- 认证中 -->
+<view class="q-authentication" wx:if="{{ degStatus == 'certification' }}">
+  <image src="../../images/renzheng.png" class="q-hourglass"></image>
+  <view class="q-authen-title">学历认证中</view>
+  <view class="q-authen-titletps">学历已提交审核，将在1周内处理，请耐心等待</view>
+  <view class="q-authen-photo" bindtap='chooseImage'>
+    <image class='diplomaImg' src="{{imgIp + diplomaImg}}"></image>
+    <view>点击图片可重新上传</view>
+  </view>
+  <view class='submitForm' bindtap='submitForm'>提交</view>
+  <view class='del' bindtap="del">删除</view>
+</view>
+<!-- 认证失败 -->
+<view class="q-failed" wx:if="{{ degStatus == 'certificationFailed' }}">
+  <image src="../../images/shibai.png"></image>
+  <view class="q-failed-title">学历认证失败</view>
+  <view class="q-failed-con">
+    <!-- 原因： -->
+    <text class="q-failed-con-content">
+      请上传正确学历证明（毕业证书、学历证书、学信网档案、就业推荐表）
+    </text>
+  </view>
+  <view class="submitForm" bindtap="again">重新认证</view>
+</view>
+<!-- 认证成功 -->
+<view class="q-success" wx:if="{{ degStatus == 'certified' }}">
+  <image src="../../images/applySuccess.png"></image>
+  <view class="q-success-title">学历认证成功</view>
+  <view class="submitForm" bindtap="again">重新认证</view>
+</view>
+<text class='rules' wx:if="{{ degStatus == 'uncertified' }}">认证须知：
+1.只需上传《毕业证书》即可,七天之内审核反馈！
+2.上传的证书应与简历中的学历一致。
+3.为了顺利通过认证，拍摄上传的证书应保证图片清晰。
+</text>
+<view class='submitForm' bindtap='submitForm' wx:if="{{ degStatus == 'uncertified' }}">提交</view>
+<view class='contactServ'>认证过程中遇到了问题请联系客服<text>400-568-1158</text></view>
+

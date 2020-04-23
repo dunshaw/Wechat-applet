@@ -1,0 +1,94 @@
+/* pages/home/home.wxss */
+@import '../../static/weui.wxss';
+.main{
+    width: 100%;
+    height: 100%;
+}
+.corporation{
+    min-width: 50%;
+    max-width: 70%;
+    margin: 0 auto;
+    height: 90rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:center;
+}
+.companyname{
+    margin: 0 20rpx;
+    font-weight: bold;
+    max-width: 80%;
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    white-space:nowrap; 
+}
+.joblist{
+    background: #eee;
+}
+.bottom{
+    height: 70rpx;
+    line-height: 70rpx;
+    width: 100%;
+    text-align: center;
+}
+.locationimg{
+    width: 30rpx;
+    height: 42rpx;
+}
+.arrowimg{
+    width: 15rpx;
+    height: 27rpx;
+}
+.home-msgInfo{
+    margin: 30% auto;
+    text-align: center;
+    color: #666;
+}
+.home-msgInfo text{
+    display: block;
+}
+.home-nodata-img{
+    width: 240rpx;
+    height: 240rpx;
+}
+.weui-gallery{
+    height: 100%vh;
+    background: rgba(0, 0, 0, .6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.erweimabox{
+    width: 100%;
+    position: relative;
+}
+.erweimatitle{
+    position: absolute;
+    top:350rpx;
+    z-index: 1000;
+    color: #444;
+    /* height: 50rpx; */
+    font-size: 28rpx;
+    width: 100%;
+    text-align: center;
+
+}
+.erweimatitle span{
+    color: #2EA7E0;
+}
+.erweimacode{
+    width: 400rpx;
+    height: 400rpx;
+    /* border: 20rpx solid #fff; */
+    border-radius: 8rpx;
+    position: absolute;
+    top: 425rpx;
+    left:100rpx;
+}
+.qrcodebg{
+    width: 600rpx;
+    height: 900rpx;
+    position: relative;
+    top: 250rpx;
+}

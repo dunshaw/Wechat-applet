@@ -1,0 +1,375 @@
+/* pages/ProgressDetail/ProgressDetail.wxss */
+page{
+  background-color: #f5f5f5;
+}
+.progress{
+  width: 100%;
+  height: 156rpx;
+  margin: 0;
+  padding: 36rpx 30rpx 40rpx 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+.companyIcon{
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 20rpx 0 0;
+  padding: 0;
+  float: left;
+}
+.jobAndComName{
+  width: 380rpx;
+  height: 80rpx;
+  margin: 0 20rpx 0 0;
+  padding: 0;
+  float: left;
+}
+.salary{
+  width: 190rpx;
+  height: 80rpx;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+.job{
+  width: 100%;
+  height: 28rpx;
+  margin: 8rpx 0 0 0;
+  padding: 0;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.companyName{
+  width: 100%;
+  height: 24rpx;
+  margin: 18rpx 0 0 0;
+  padding: 0;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 24rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.salaryNub{
+  width: 100%;
+  height: 32rpx;
+  margin: 8rpx 0 0 0;
+  padding: 0;
+  font-size: 32rpx;
+  color: #FF961E;
+  line-height: 32rpx;
+  text-align: right;
+}
+.allProgress{
+  width: 100%;
+  height: max-content;
+  margin: 280rpx 0 0 0;
+  padding: 0;
+  position: relative;
+  top: 0;
+}
+.ProgressDetailShell{
+  width: 690rpx;
+  height: max-content;
+  margin: 0 0 190rpx 60rpx;
+  padding: 0;
+  position: relative;
+  top: 0;
+}
+.ProgressDetail{
+  width: 100%;
+  height: max-content;
+  padding: 30rpx;
+  margin: 0 0 20rpx 0;
+  border-left: 1px solid #DDDDDD;
+  box-sizing: border-box;
+  position: relative;
+}
+.ProgressDetail:last-child{
+  border: none;
+}
+.ProgressDetail:first-child view.conTitle,.ProgressDetail:first-child view.conTime{
+  color: #2EA7E0;
+}
+.ProgressDetail:first-child .conDetail view,.ProgressDetail:first-child .conDetail text{
+  color: #333;
+}
+.Dot{
+  width: 24rpx;
+  height: 24rpx;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  position: absolute;
+  top: -24rpx;
+  left: -12rpx;
+}
+.Dot>view{
+  width: 12rpx;
+  height: 12rpx;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background-color: #DDDDDD;
+  position: absolute;
+  top: 6rpx;
+  left: 6rpx;
+}
+.ProgressDetail:first-child .Dot{
+  background-color: rgba(46,167,224,.2);
+}
+.ProgressDetail:first-child .Dot>view{
+  background-color: #2EA7E0;
+}
+.contentShell{
+  width: 100%;
+  height: max-content;
+  padding: 30rpx;
+  margin: 0;
+  background-color: #fff;
+  box-sizing: border-box;
+  position: relative;
+  top: -115rpx;
+}
+.conTitle{
+  height: 32rpx;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #999;
+}
+.conTime{
+  height: 20rpx;
+  font-size: 20rpx;
+  line-height: 20rpx;
+  color: #999;
+  margin-top: 15rpx;
+}
+.conDetail{
+  width: 100%;
+  height: max-content;
+  margin: 40rpx 0 0 0;
+  padding: 0;
+}
+.viewDiv{
+  width: 100%;
+  overflow: hidden;
+  margin: 0 0 20rpx 0;
+  padding: 0;
+  display: flex;
+}
+.staticStyle{
+  font-size: 28rpx;
+  color: #999;
+}
+.address-maker{
+  position: relative;
+}
+.conDetail .address-maker>.fa{
+  width: 36rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #FF961E;
+}
+.TimeTitle,.AddressTitle,.PeopleTitle,.PhoneTitle,.RemarksTitle,.TipsTitle{
+  width: 140rpx;
+  height: max-content;
+  margin: 0;
+  padding: 0;
+  float: left;
+  font-size: 28rpx;
+  color: #999;
+  text-align: justify;
+}
+.TimeCon,.AddressCon,.PeopleCon,.PhoneCon,.RemarksCon,.TipsCon{
+  width: calc(100% - 140rpx);
+  height: max-content;
+  margin: 0;
+  padding: 0;
+  float: left;
+  font-size: 28rpx;
+  color: #999;
+}
+.model5{
+  width: 100%;
+  height: max-content;
+  overflow: hidden;
+  margin: 0 0 88rpx 0;
+  padding: 30rpx;
+  background-color: #fff;
+  z-index: 99;
+  position: absolute;
+  bottom: 0;
+}
+.tipsTitle{
+  font-size: 32rpx;
+  color: #FF4C4C;
+}
+.tipsTitle>text{
+  margin-right: 20rpx;
+}
+.tipsContent{
+  margin-top: 25rpx;
+  font-size: 24rpx;
+  color: #333;
+  line-height: 32rpx;
+}
+.tipsContent>text{
+  color: #FF4C4C;
+}
+.twoBtn{
+  width: 100%;
+  height: 88rpx;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  background-color: #fff;
+}
+/*.applyInterview*/
+.onLine{
+  width: 100%;
+  height: 88rpx;
+  margin: 0;
+  padding: 0;
+  float: left;
+  font-size: 28rpx;
+  /*color: #333;*/
+  line-height: 88rpx;
+  text-align: center;
+  border-top: 1px solid #DDDDDD;
+  color: #fff;
+  background-color: #2EA7E0
+}
+.onLine>text{
+  margin-right: 15rpx;
+  color: #fff;
+  background-color: #2EA7E0
+}
+.applyInterview{
+  color: #fff;
+  background-color: #2EA7E0
+}
+.yesOrNo{
+  width: 210rpx;
+  height: 44rpx;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+}
+.yes{
+  width: 100rpx;
+  height: 44rpx;
+  margin: 0 10rpx 0 0;
+  padding: 0;
+  float: left;
+  background-color: #2EA7E0;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  line-height: 44rpx;
+  color: #fff;
+  text-align: center;
+}
+.no{
+  width: 100rpx;
+  height: 44rpx;
+  margin: 0;
+  padding: 0;
+  float: left;
+  background-color: #fff;
+  border: 1rpx solid #2EA7E0;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  line-height: 42rpx;
+  color: #2EA7E0;
+  text-align: center;
+}
+.bottom-btn{
+  display: flex;
+  height: 88rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.bottom-callbtn{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(241, 241, 241);
+  font-size:14px;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  line-height:17px;
+}
+.bottom-nobtn{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:rgb(224, 46, 61);
+  font-size:14px;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:17px;
+}
+.address-mask{
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  position: fixed;
+}
+.picker-view{
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  bottom: 0;
+  z-index: 99;
+  background: #fff;
+}
+.operation{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  position: absolute;
+  z-index: 99;
+  box-sizing: border-box;
+  background: #fff;
+}
+.operation .cancel-btn{
+  color: #999;
+}
+.operation .comfirm-btn{
+  color: goldenrod;
+  float: right;
+}
+.item-column{
+  line-height: 50px;
+  font-size: 26rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}

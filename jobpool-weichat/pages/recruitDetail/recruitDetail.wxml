@@ -1,0 +1,284 @@
+<!--pages/recruitDetail/recruitDetail.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<!-- 职位详情页面 -->
+<view class='Shell'>
+  <view class='somePeople' wx:if="{{interviewApplyList.length>0}}"><image class='somepeopleImg' src='{{interviewApplyList[0].userAvatar == null?"../../images/peopleDefault.png":imgIp + interviewApplyList[0].userAvatar}}'></image>{{interviewApplyList[0].userName}} {{interviewApplyList[0].time}}申请了此职位</view>
+  <swiper class='swiperShell' indicator-dots="{{false}}" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}">
+    <block wx:for='{{companyPhoto}}' wx:key='index'>
+      <swiper-item>
+        <image src="{{imgIp + item.sourcePath}}" class="slide-image"/>
+        <view class='current'>{{index + 1}}/{{companyPhoto.length}}</view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class='navBar' wx:if="{{isShowNav}}">
+  <view class='nav {{active == 1?"active":""}}' bindtap='scrollTo' data-nub="1"><text class='fa fa-map-marker'></text>职位详情</view>
+  <view class='nav {{active == 2?"active":""}}' bindtap='scrollTo' data-nub="2">招聘要求</view>
+  <view class='nav {{active == 3?"active":""}}' bindtap='scrollTo' data-nub="3">公司介绍</view>
+  <view class='nav {{active == 4?"active":""}}' bindtap='scrollTo' data-nub="4">相似职位</view>
+</view>
+
+<view class="bottom-btn" wx:if="{{applyFlag}}">
+  <view class="cha-btn" bindtap="cha">
+    <image src="../../images/chakan.png"></image>
+    查看进度
+  </view>
+  <view class="state-btn">已申请</view>
+</view>
+
+<view class='model box'>
+  <view class='part box'>
+    <view class='part1Left'>
+      <view class='part1LeftTitle'>{{job.name}}</view>
+      <view class='part1LeftRequire'>{{job.area}} | {{job.xueliyaoqiu}} | {{job.gongzuonianxian}}</view>
+      <view class='part1LeftSeePower' bindtap="seeCompetitive">查看简历竞争力<view class='fa fa-angle-double-right'></view></view>
+    </view>
+    <view class='part1Right'>
+      <view class='part1RightSalary' wx:if="{{job.salaryMin == job.salaryMax}}">{{job.salaryMins}}K</view>
+      <view class='part1RightSalary' wx:else>{{job.salaryMins}}K~{{job.salaryMaxs}}K</view>
+      <view class='part1RightApplyNub'><text style='color:#FF961E'>{{job.applyNumber}}</text>人申请</view>
+    </view>
+  </view>
+  <view class='part2'>
+    <view class='part2Time'>
+        <view class='part2Title'>面试时间：</view>
+        <view class='part2Con'>{{job.interviewTimeString ? job.interviewTimeString : '等待通知'}}</view>
+        
+      <!-- <block wx:else>
+        <view class='part2Title2'>等待面试通知</view>
+      </block> -->
+    </view>
+    <view class='part2Address' hidden="{{job.type == 'online'}}">
+      <view class='part2Title'>面试地址：</view>
+      <view class="part2Con viewAddress workAddress" hidden="{{(job.lookStatus==1 && !applyFlag && job.type != 'online') || (job.lookStatus==0 && !interviewFlag && job.type != 'online')}}" bindtap="seeadd" data-ip="1">{{job.interviewAddress}}{{job.supplementInterviewAddress ? job.supplementInterviewAddress : ''}}
+        <text class='fa fa-map-marker'></text>
+      </view>
+      <view class='applyTrueCanSee' wx:if="{{job.lookStatus==1 && !applyFlag && job.type != 'online'}}">申请成功可查看</view>
+      <view class='applyTrueCanSee' wx:if="{{job.lookStatus==0 && !interviewFlag && job.type != 'online'}}">邀约面试后查看</view>
+    </view>
+    <view class='part2WorkAddress'>
+      <view class='part2Title'>工作地址：</view>
+      <view class="part2Con viewAddress workAddress" bindtap="seeadd" data-ip="2">{{job.workingAddress}}{{job.supplementAddress}}
+      <text class='fa fa-map-marker'></text>
+      </view>
+      <!-- <text wx:if="{{!applyFlag}}">{{job.type == "online"?"在线直聘":(job.type == "scene"?"现场直面会":"") }}</text> -->
+      <!-- <view class='applyTrueCanSee' wx:if="{{!applyFlag && job.type != 'online'}}">申请成功可查看</view> -->
+      <view class='part2Distance'>距离{{job.distance}}公里</view>
+    </view>
+  </view>
+  <view class='part2' id='nav1'>
+    <view class='part3Title'><image class='titleIcon' src='../../images/blueIcon.png'></image>每月能拿多少钱</view>
+    <view class='part3Salary' hidden="{{job.salaryMin == job.salaryMax}}">{{job.salaryMin}}-{{job.salaryMax}}元</view>
+    <view class='part3Salary' hidden="{{job.salaryMin != job.salaryMax}}">{{job.salaryMin}}元</view>
+    <view class='salaryClass' wx:if="{{job.baseSalaryMin!=job.baseSalaryMax}}">基本工资：{{job.baseSalaryMin}}-{{job.baseSalaryMax}}元</view>
+    <view class='salaryClass' wx:elif="{{job.baseSalaryMin==job.baseSalaryMax&&job.baseSalaryMax!=0}}">基本工资：{{job.baseSalaryMin}}元</view>
+    <view class='salaryClass' wx:if="{{job.performanceMin!=job.performanceMax}}">绩效工资：{{job.performanceMin}}-{{job.performanceMax}}元</view>
+    <view class='salaryClass' wx:elif="{{job.performanceMin==job.performanceMax&&job.performanceMin!=0}}">绩效工资：{{job.performanceMin}}元</view>
+    <view class='salaryClass' wx:if="{{job.subsidyMin!=job.subsidyMax}}">各类补贴：{{job.subsidyMin }}-{{job.subsidyMax }}元</view>
+    <view class='salaryClass' wx:elif="{{job.subsidyMin==job.subsidyMax&&job.subsidyMin!=0}}">各类补贴：{{job.subsidyMin}}元</view>
+    <view class='salaryClass' wx:if="{{job.overtimeSalaryMin!=job.overtimeSalaryMax}}">加班工资：{{job.overtimeSalaryMin }}-{{job.overtimeSalaryMax}}元</view>
+    <view class='salaryClass' wx:elif="{{job.overtimeSalaryMin==job.overtimeSalaryMax&&job.overtimeSalaryMin!=0}}">加班工资：{{job.overtimeSalaryMin}}元</view>
+    <view class='salaryClass' wx:if="{{job.otherSalaryMin!=job.otherSalaryMax}}">其他收入：{{job.otherSalaryMin }}-{{job.otherSalaryMax }}元</view>
+    <view class='salaryClass' wx:elif="{{job.otherSalaryMin==job.otherSalaryMax&&job.otherSalaryMin!=0}}">其他收入：{{job.otherSalaryMin }}元</view>
+    <view class='salaryClass' wx:if="{{job.attendanceBonusMin!=job.attendanceBonusMax }}">全勤奖：{{job.attendanceBonusMin }}-{{job.attendanceBonusMax}}元</view>
+    <view class='salaryClass' wx:elif="{{job.attendanceBonusMin==job.attendanceBonusMax&&job.attendanceBonusMax!=0 }}">全勤奖：{{job.attendanceBonusMin }}元</view>
+    <view class='salaryOther'>{{job.salaryDescription}}</view>
+  </view>
+  <view class='part2'>
+    <view class='part3Title'><image class='titleIcon' src='../../images/blueIcon.png'></image>福利、晋升空间怎么样</view>
+    <view class='part4LabelShell'>
+      <view class='part4Label' wx:for="{{labels}}" wx:key="index" wx:if="{{item.type=='welfare'}}">{{item.text}}</view>
+    </view>
+    <text class='part4Con'>{{job.companyWelfare}}</text>
+  </view>
+  <view class='part2'>
+    <view class='part3Title'><image class='titleIcon' src='../../images/blueIcon.png'></image>工作时间</view>
+    <view class='part5WorkTime'><text class='part5WorkTimeTitle'>上班时间：<text class='part5WorkTimeCon'>{{job.workingTime ==null?"内部通知":job.workingTime}}</text></text><text class='part5WorkTimeTitle'>午休：<text class='part5WorkTimeCon'>{{job.wuxiu}}</text></text></view>
+    <view class='part4LabelShell'>
+      <view class='part4Label' wx:for="{{labels}}" wx:key="index" wx:if="{{item.type=='workingTime'}}">{{item.text}}</view>
+    </view>
+    <view class='part5Con'>{{job.workingTimeDesc}}</view>
+  </view>
+  <view class='part2'>
+    <view class='part3Title'><image class='titleIcon' src='../../images/blueIcon.png'></image>工作职责</view>
+    <view class='part4LabelShell' wx:if="{{jobDutyShow}}">
+      <view class='part4Label' wx:for="{{labels}}" wx:key="index" wx:if="{{item.type=='jobDuty'}}">{{item.text}}</view>
+    </view>
+    <view class='part6Con'>
+      <text class='part6ConText {{showMOre1?"":"threeHidden" }}'>{{job.jobDuty}}</text>
+      <!--<view>1.受理客户咨询、讲解，能很好地完成工作；</view>
+      <view>2.整理和分析售后服务过程中反馈的数据和信息，并不定期统计数据，为公司决策提供参考依据；</view>
+      <view>3.协助其他部门售后支持工作；</view>-->
+    </view>
+    <view class='seeMore' data-value='1' bindtap='showMore' wx:if="{{job.jobDuty && job.jobDuty.length > 40}}" ><text class='fa {{showMOre1?"fa-angle-up":"fa-angle-down"}}'></text></view>
+  </view>
+  <view class='part2' id='nav2'>
+    <view class='part3Title'><image class='titleIcon' src='../../images/blueIcon.png'></image>招聘要求</view>
+    <view class='part4LabelShell' wx:if="{{requireShow}}">
+      <view class='part4Label' wx:for="{{labels}}" wx:key="index" wx:if="{{item.type=='require'}}">{{item.text}}</view>
+    </view>
+    <view class='part6Con'>
+      <text class='part6ConText {{showMOre2?"":"threeHidden" }}'>{{job.jobRequire}}</text>
+    </view>
+    <view class='seeMore' data-value='2' wx:if="{{job.jobRequire && job.jobRequire.length > 40}}" bindtap='showMore'><text class='fa {{showMOre2?"fa-angle-up":"fa-angle-down"}}'></text></view> 
+  </view>
+  <view class='part2' id='nav3'>
+    <view class='part3Title'><image class='titleIcon' src='../../images/blueIcon.png'></image>公司信息</view>
+    <view class='part8CompanyInfo box' bindtap="gongsixiangqin">
+      <view class='part8ComImg'>
+        <image class='part8ComDefaultImg' src='{{companyLogo == null ||companyLogo == ""?"../../images/ComDefault.png":imgIp + companyLogo.sourcePath}}'></image>
+      </view>
+      <view class='part8InfoShell'>
+        <view class="gongs-box">
+          <view class='part8Info_name'>{{company.alias}}</view>
+          <view wx:if="{{company.certificationStatus == 'success'}}" class="zizhirenzheng">资质认证</view>
+        </view>
+        <view class='part8Info_fullName'>全称：{{company.name}}</view>
+        <view class='part8Info_scale'>{{company.city}} | {{company.scaleName}} | {{company.industryName}}</view>
+      </view>
+      <view class='goCheckCom'><text class='fa fa-angle-right'></text></view>
+    </view>
+  </view>
+</view>
+<view class='block'></view>
+<view class='model2 box'>
+  <view class='part2'>
+    <view class='part3Title'><image class='titleIcon' src='../../images/blueIcon.png'></image>投递要求和简历匹配项</view>
+    <view class='part4LabelShell'>
+      <view class='part9Label'>
+        <view class='Education'>最低学历：</view>
+        <view class='EducationCon'>{{requirements.educationRequirement}}</view>
+        <view class='isAccord {{requirements.education?"Accord":""}}'>{{requirements.education?"符合":"不符合"}}</view>
+      </view>
+      <view class='part9Label'>
+        <view class='Age'>年龄要求：</view>
+        <view class='AgeCon'>{{requirements.ageRequirement}}</view>
+        <view class='isAccord {{requirements.age?"Accord":""}}'>{{requirements.age?"符合":"不符合"}}</view>
+      </view>
+      <view class='part9Label'>
+        <view class='experience'>工作经验：</view>
+        <view class='experienceCon'>{{requirements.workExperienceRequirement ? requirements.workExperienceRequirement : ''}}</view>
+        <view class='isAccord {{requirements.workExperience?"Accord":""}}'>{{requirements.workExperience?"符合":"不符合"}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='block'></view>
+<view class='model3 box'>
+  <view class='part2' wx:if="{{!(job.type == 'scene')}}">
+    <view class='part3Title'><image class='titleIcon' src='../../images/blueIcon.png'></image>职位发布者</view>
+    <view class='part8CompanyInfo box'>
+      <view class='PublisherImg'>
+        <image class='PublisherDefaultImg' src='{{publisher.avatar?imgIp + publisher.avatar:"../../images/peopleDefault.png"}}'></image>
+      </view>
+      <view class='part8InfoShell'>
+        <view class='Publisher_name'>{{publisher.name == null ? '' : publisher.name}} <view>{{publisher.lastActive}}</view></view>
+        <view class='Publisher_job'>{{publisher.position == null ? "人事":publisher.position}}</view>
+      </view>
+      <view class='goCheckCom' wx:if="{{job.type != 'online'}}"><text class='fa fa-angle-right'></text></view>
+    </view>
+  </view>
+</view>
+<view class='block' wx:if="{{!(job.type == 'scene')}}"></view>
+
+<!-- 职位发布者下面展示的富文本 -->
+<view class="text">
+  <!-- <rich-text nodes="{{text}}"></rich-text> -->
+  <template is="wxParse" data="{{wxParseData:text.nodes}}"/>
+</view>
+<view class='block' wx:if="{{text}}"></view>
+
+<view class='model4 box'>
+  <view class='part2' id='nav4'>
+    <view class='part3Title'><image class='titleIcon' src='../../images/blueIcon.png'></image>相似职位</view>
+    <view class='content' wx:for="{{similarJobList}}" wx:key="index">
+      <view class='jobInfoShell'>
+        <view class='jobInfoLeft' data-id="{{item.id}}" data-time="{{item.interviewTimeDate}}" bindtap="jump">
+          <view class='jobName'>{{item.name}}</view>
+          <view class='jobInfo'>{{item.areaName}} | {{item.gongzuonianxian}} | {{item.xueliyaoqiu}} | 距离<text>{{item.distance}}</text>公里</view>
+          <view class='jobLable'>
+            <view wx:for="{{item.labels}}" wx:key="index">{{item}}</view>
+          </view>
+        </view>
+        <view class='jobInfoRight'>
+          <view class='jobSalary'>{{item.salaryMins}}k-{{item.salaryMaxs}}k</view>
+        </view>
+      </view>
+      <view class='jobFooter'>
+        <view class='jobFootTime'>面试时间：<text>{{item.mianshishijian}}</text></view>
+        <view class='jobFootPeople'>已申请<text> {{item.applyNumber}} </text>人</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='block'></view>
+<view class='model5 box'>
+  <view class='tipsTitle'><text class='fa fa-warning(alias)'></text>温馨提示</view>
+  <view class='tipsContent'>该HR承诺名下所有职位不向您收取任何费用，如有不实，请立即举报！<text>《防骗指南》</text></view>
+</view>
+
+<view class='twoBtn' wx:if="{{!applyFlag}}">
+  <!--<view class='onLine'><text class='fa fa-commenting-o'></text>在线沟通</view>-->
+  <view class='q-call' wx:if="{{job.type == 'scene'}}" bindtap="call">电话沟通</view>
+  <view class='applyInterview' bindtap='applyInterview'>申请面试</view>
+</view>
+
+<view class='mask' wx:if="{{isShowApply}}">
+  <view class='maskConShell'>
+    <view class='maskConTitle'>温馨提示</view>
+    <view class='maskCon'>
+      <view class='viewTime' wx:if="{{viewtimetishi}}">面试时间：{{newtidaytimetishi}}
+      <p style="color:#FFBB7A;display:block;">离面试时间已经很近了，请注意时间安排哦</p></view>
+      <view class='resumeCompleteRequire' wx:if="{{gongzuojinli || jiaoyujingli}}">
+        <view class='requireTitle'>HR要求完善以下信息：</view>
+        <view class='requireTip'>(完善信息更容易被查看)</view>
+        <!-- <view class='isComplete' wx:if="{{gerenxingxi}}">
+          <view class='require'>个人信息</view><view class='goComplete' bindtap='goComplete'>立即去完善</view>
+        </view> -->
+        <view class='isComplete' wx:if="{{jiaoyujingli}}">
+          <view class='require'>教育经历</view><view class='goComplete' bindtap='goComplete' data-url='educationExp'>立即去完善</view>
+        </view>
+        <view class='isComplete' wx:if="{{gongzuojinli}}">
+          <view class='require'>工作经历</view><view class='goComplete' bindtap='goComplete' data-url='workExp'>立即去完善</view>
+        </view>
+      </view>
+    </view>
+    <view class='maskBtn'>
+      <view class='cancle' bindtap='cancleApply'>再想想</view>
+      <view class='cancle' bindtap='' wx:if="{{onlyapply}}" style="color:#999;">确认申请</view>
+      <view class='sureSub' bindtap='sureSubApply' wx:else>确认申请</view>
+    </view>
+  </view>
+</view>
+
+<view class='mask mask2' wx:if="{{jobsharedFlag}}">
+  <view class='maskConShell'>
+    <view class='maskConTitle'>请完善以下信息，以便企业快速安排面试</view>
+    <view class='maskCon'>
+      <view class="item">
+        <text>是否至少与一家单位建立了劳动关系？</text>
+        <switch checked="{{existLaborRelationship}}" data-info="exist" bindchange="changeSwitch" />
+      </view>
+      <view class="item" wx:if='{{existLaborRelationship}}'>
+        <text>是否已签署劳动合同？</text>
+        <switch checked="{{signedLaborContract}}" data-info="contract" bindchange="changeSwitch" />
+      </view>
+      <view class="item" wx:if='{{existLaborRelationship}}'>
+        <text>是否已缴纳社保？</text>
+        <switch checked="{{payedSocialSecurity}}" data-info="security" bindchange="changeSwitch" />
+      </view>
+      <view class="item-last">
+        <switch checked="{{imready}}" type="checkbox" data-info="imready" bindchange="changeSwitch" />
+        <view class="item-tips">我已阅读并同意<text style="color:#2EA7E0;" bindtap="richtext">《人才共享免责声明》</text> </view>
+      </view>
+    </view>
+    <view class='maskBtn'>
+      <view class='cancle' bindtap='cancleApply2'>再想想</view>
+      <view class='cancle' wx:if="{{!imready}}" style="color:#999;">确认申请</view>
+      <view class='sureSub' bindtap='sureSubApply2' wx:else>确认申请</view>
+    </view>
+  </view>
+</view>
+
+<web-view src="seeurl" wx:if="{{seeurl}}"></web-view>

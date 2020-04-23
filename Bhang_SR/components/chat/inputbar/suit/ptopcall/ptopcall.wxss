@@ -1,0 +1,16 @@
+.wraper{
+	position: fixed;
+	bottom: 10rpx;
+	height: 200rpx;
+	width: 100%;
+	z-index: 9;
+	background:#fff;
+}
+.other-button-hover {
+  background-color: blue;
+}
+.button-cancel {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+}

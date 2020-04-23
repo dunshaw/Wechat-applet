@@ -1,0 +1,113 @@
+<!--pages/msg/msg.wxml-->
+<view style="width:100%;height:100vh;overflow-y:scroll;"> 
+    <customnav backbar="" text="{{navtitle}}" />
+    <view style="height:{{46+statusBarHeight}}px;"></view> 
+    <view wx:if="{{info=='notSuitable'}}">
+        <form bindsubmit="formRefuse" bindreset="formReset">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <textarea name="reasonForRejection" class="weui-textarea" placeholder="请输入不合适原因" maxlength='100' bindinput='userdescInput' style="height: 400rpx;" />
+                        <view class="weui-textarea-counter">{{desclength}}/100</view>
+                    </view>
+                </view>
+            </view>
+            <view class="bottom">
+                <button class="weui-btn submitbtn" type="" formType="submit" disabled="{{disabled}}">确 定</button>
+            </view>
+        </form>
+    </view>
+    <view wx:else>
+        <form bindsubmit="formOffer" bindreset="formReset">
+            <view class="weui-cells weui-cells_after-title weui-cell-selfs">
+                <view class="weui-cell" wx:for="{{info=='sendOffer'?offerlist:reexaminelist}}" wx:key="index">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label" wx:if="{{info=='invitationInterview'}}">{{item.tip2}}:</view>
+                        <view class="weui-label" wx:else>{{item.tip}}:</view>
+                    </view>
+                    <view class="weui-cell__bd" >
+                        <view wx:if="item.intype=='input'" >
+                          <input wx:if="{{item.name=='entryContact' || item.name=='interviewContact'}}" class="weui-input" name="{{item.name}}" type="{{item.type}}" value="{{jobInfo.Contact}}" 
+                                maxlength="{{item.maxlength}}" placeholder="{{item.placeholder}}"  />
+                          <input wx:if="{{item.name=='entryContactNumber' || item.name=='interviewContactNumber'}}" class="weui-input" name="{{item.name}}" type="{{item.type}}" value="{{jobInfo.ContactNumber}}" 
+                                maxlength="{{item.maxlength}}" placeholder="{{item.placeholder}}"  />
+                        </view>
+                        <input wx:if="{{item.intype=='job'}}" class="weui-input" value="{{job}}"
+                             maxlength="{{item.maxlength}}" disabled  />
+                        <view wx:if="{{item.intype=='place'}}" bindtap="selectplace">
+                          <text >{{addr.Addr}}</text>
+                          <view class="chooseplace"><image src='/images/rightarr.png' class="rightimg"></image></view>
+                        </view>
+                        <view wx:if="{{item.intype=='datetime'}}" class="datetimepick">
+                            <picker hidden="{{timepick}}" mode="date" value="{{date}}" start="{{mindate}}" end="{{maxdate}}" bindchange="bindDateChange">
+                                <view class="weui-input">{{date}}</view>
+                            </picker> 
+                            <picker mode="time" value="{{time}}" bindchange="bindTimeChange">
+                                <view class="weui-input">{{time}}</view>
+                            </picker>
+                        </view>      
+                    </view>
+                </view>
+                <view class="weui-cell">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">备注信息:</view>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell-self">
+                    <view class='wrapper' wx:if='{{info=="sendOffer"}}'>
+                        <view class='toolbar' catchtouchend="format">
+                            <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
+                            <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
+                            <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
+                            <i class="iconfont icon-zitishanchuxian {{formats.strike ? 'ql-active' : ''}}" data-name="strike"></i>
+                            <i class="iconfont icon-zuoduiqi {{formats.align === 'left' ? 'ql-active' : ''}}" data-name="align" data-value="left"></i>
+                            <i class="iconfont icon-juzhongduiqi {{formats.align === 'center' ? 'ql-active' : ''}}" data-name="align" data-value="center"></i>
+                            <i class="iconfont icon-youduiqi {{formats.align === 'right' ? 'ql-active' : ''}}" data-name="align" data-value="right"></i>
+                            <i class="iconfont icon-zuoyouduiqi {{formats.align === 'justify' ? 'ql-active' : ''}}" data-name="align" data-value="justify"></i>
+                            <!-- <i class="iconfont icon-line-height {{formats.lineHeight ? 'ql-active' : ''}}" data-name="lineHeight" data-value="2"></i>
+                            <i class="iconfont icon-Character-Spacing {{formats.letterSpacing ? 'ql-active' : ''}}" data-name="letterSpacing" data-value="2em"></i>
+                            <i class="iconfont icon-722bianjiqi_duanqianju {{formats.marginTop ? 'ql-active' : ''}}" data-name="marginTop" data-value="20px"></i>
+                            <i class="iconfont icon-723bianjiqi_duanhouju {{formats.micon-previewarginBottom ? 'ql-active' : ''}}" data-name="marginBottom" data-value="20px"></i>
+                            <i class="iconfont icon-clearedformat" bindtap="removeFormat"></i>
+                            <i class="iconfont icon-font {{formats.fontFamily ? 'ql-active' : ''}}" data-name="fontFamily" data-value="Pacifico"></i>
+                            <i class="iconfont icon-fontsize {{formats.fontSize === '24px' ? 'ql-active' : ''}}" data-name="fontSize" data-value="24px"></i>
+
+                            <i class="iconfont icon-text_color {{formats.color === '#0000ff' ? 'ql-active' : ''}}" data-name="color" data-value="#0000ff"></i>
+                            <i class="iconfont icon-fontbgcolor {{formats.backgroundColor === '#00ff00' ? 'ql-active' : ''}}" data-name="backgroundColor" data-value="#00ff00"></i>
+
+                            <i class="iconfont icon-date" bindtap="insertDate"></i> -->
+                            <!-- <i class="iconfont icon--checklist" data-name="list" data-value="check"></i>
+                            <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
+                            <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i> -->
+                            <!-- <i class="iconfont icon-undo" catchtouchend="undo"></i>
+                            <i class="iconfont icon-redo" catchtouchend="redo"></i> -->
+
+                            <!-- <i class="iconfont icon-outdent" data-name="indent" data-value="-1"></i>
+                            <i class="iconfont icon-indent" data-name="indent" data-value="+1"></i>
+                            <i class="iconfont icon-fengexian" bindtap="insertDivider"></i> -->
+                            <i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>
+                            <!-- <i class="iconfont icon-format-header-1 {{formats.header === 1 ? 'ql-active' : ''}}" data-name="header" data-value="{{1}}"></i>
+                            <i class="iconfont icon-zitixiabiao {{formats.script === 'sub' ? 'ql-active' : ''}}" data-name="script" data-value="sub"></i>
+                            <i class="iconfont icon-zitishangbiao {{formats.script === 'super' ? 'ql-active' : ''}}" data-name="script" data-value="super"></i> -->
+                            <!-- <i class="iconfont icon-quanping"></i> -->
+                            <i class="iconfont icon-shanchu" catchtouchend="clear"></i>
+                            <!-- <i class="iconfont icon-direction-rtl " catchtouchend='getcontent'></i> -->
+
+                        </view>
+                        
+                        
+                        <editor id="editor" class="ql-container" bindstatuschange="onStatusChange" bindready="onEditorReady">
+                        </editor>
+                    </view>
+                    <view class="weui-cell__bd" wx:else>
+                        <textarea class="weui-textarea" name="desc" placeholder="请输入备注信息" maxlength='100' bindinput='userdescInput' value="{{jobInfo.Remarks}}" /> 
+                    </view>
+                </view>
+            </view>
+            <view class="bottom">
+                <button class="weui-btn disabledbtn" type="" wx:if="{{disabled}}">确 定</button>
+                <button class="weui-btn submitbtn" type="" formType="submit" wx:else>确 定</button>
+            </view>
+        </form>
+    </view>
+</view>

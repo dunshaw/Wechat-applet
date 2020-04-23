@@ -1,0 +1,7 @@
+<!--pages/pulse/pulse.wxml-->
+<view class="animation-element-wrapper">
+    <view class="animation-element" animation="{{ani}}">
+      <image src='/images/wx_login.png'></image>
+      <text>职池后台</text>
+    </view>
+</view>

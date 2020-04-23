@@ -1,0 +1,10 @@
+<!--pages/perfectInfomation/perfectInfomation.wxml-->
+<view class='Shell'>
+  <view class='genderModel' >
+    <view class='genderTitle'><image class="xinghaored" src="../../../images/xinghaored.png" role="img"></image>身份证</view>
+    <view class="mailboxView">
+      <input class="inputName" placeholder="请填写您的身份证" placeholder-class="placeholder" bindinput="inputFjCardId"> </input>
+    </view>
+  </view>
+  <view class='submitForm' bindtap='submitForm'>提交</view>
+</view>

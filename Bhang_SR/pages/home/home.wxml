@@ -1,0 +1,47 @@
+<!--pages/home/home.wxml-->
+<view>
+    <customnav backbar="true" text="面试" />
+    <view style="height:{{46+statusBarHeight}}px;"></view>
+    <view id="joblist">
+        <view class='main'>
+            <!-- 公司  -->
+            <navigator url="../companylist/companylist?lng={{lng}}&lat={{lat}}" class="corporation" >
+                <image class="locationimg" src="/images/location.png" />
+                <text class="companyname">{{defaultcomp}}</text>
+                <image class="arrowimg" src="/images/rightarr.png" />       
+            </navigator>
+            <!-- 日期  -->
+            <calendar data="{{situation}}" bind:clickDate="getclickDate" />
+            <!-- 职位列表  -->
+            <view class="joblist" hidden="{{joblist.length == 0}}" style="{{joblist.length < 3?'':'padding-bottom:100rpx;'}}">    
+                <jobboard wx:for="{{joblist}}" job="{{item}}" selected="{{newselected}}" checkmode="{{ischeckmode}}" wx:key="index"
+                          bind:selectedData="getselectedData"
+                          bind:ischeckboxmode="intocheckmode" 
+                          bind:openGallery="openGallery" >
+                </jobboard> 
+            </view>
+            <!-- 数据空白 -->
+            <view class="home-msgInfo" hidden="{{joblist.length != 0 || !alljuris}}">
+                <image class="home-nodata-img" src="/images/nodata.png"></image> 
+                <text>暂无数据</text>  
+            </view>
+            <!-- 无权限 -->
+            <view class="home-msgInfo" hidden="{{alljuris || joblist.length != 0}}">
+                <image class="home-nodata-img" src="/images/noauthority.png"></image> 
+                <text>暂无权限</text>  
+            </view>  
+        </view>
+    </view>
+    <weui-dialog istrue="{{ischeckmode}}" bind:ischeckboxmode="intocheckmode" catchtouchmove="myCatchTouch" />
+    <view class="weui-gallery {{opengallery ? 'weui-gallery_show' : ''}}" bindtap="closeGallery">
+        <view class="weui-gallery__img__wrp">
+            <view class="erweimabox">
+                <image src="../../images/qrcodebg2.png" class="qrcodebg">
+                    <p class="erweimatitle"><span>{{erweimaJob}}</span>签到码</p>
+                    <image class="weui-gallery__img erweimacode" src="data:image/png;base64,{{JobQRcode}}"></image>
+                </image>
+            </view>
+        </view>
+    </view> 
+    <mytabbar />
+</view>

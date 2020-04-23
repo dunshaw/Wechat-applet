@@ -1,0 +1,25 @@
+<!--pages/Progress/Progress.wxml-->
+<view class='Shell' wx-if="{{list.length>0 && islogin}}">
+  <view class='progressList' wx:for='{{list}}' wx:key="index" bindtap='jump' data-id='{{item.applyId}}'>
+    <image class='companyIcon' src='{{item.companyLogo ==null?"../../images/ComDefault.png":imgIp + item.companyLogo}}'></image>
+    <view class='jobAndComName'>
+      <view class='job'>{{item.jobName}}</view>
+      <view class='companyName'>{{item.companyName}}</view>
+    </view>
+    <view class='stateAndTime'>
+      <view class='state'>{{item.zhuangtai}}</view>
+      <view class='time'>{{item.timeString}}</view>
+    </view>
+  </view>
+</view>
+<view class='noProgress' wx-if="{{list.length<=0 && islogin}}">
+  <image class='noProgressIcon' src='../../images/4.png'></image>
+  <view class='tips1'>您还没有申请过面试，</view>
+  <view class='tips2'>赶快去申请吧！</view>
+  <view class='goApply' bindtap='jump' data-url='app'>去申请面试</view>
+</view>
+
+<view wx:if="{{!islogin}}" class="islogin" bindtap="login">
+  <image src="../../images/nohave.png"></image>
+  <text>请先登录/注册</text>
+</view>

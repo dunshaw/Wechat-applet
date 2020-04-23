@@ -1,0 +1,36 @@
+/* pages/Employment/Employment.wxss */
+page{
+  background-color: #f5f5f5;
+}
+.Shell{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.item{
+  height: 140rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+}
+.last-item{
+  border-bottom: 1px solid #eee;
+}
+.submitForm{
+  height: 80rpx;
+  margin: 30rpx;
+  padding: 0;
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #2EA7E0;
+  border-radius: 10rpx;
+}

@@ -1,0 +1,6 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "zy-slider": "/components/zyslider/zyslider"
+  }
+}

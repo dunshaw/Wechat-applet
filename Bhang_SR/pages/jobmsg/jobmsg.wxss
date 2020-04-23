@@ -1,0 +1,107 @@
+/* pages/msg/msg.wxss */
+@import '../../static/weui.wxss';
+@import "../../static/iconfont.wxss";
+.weui-cells{
+  font-size: 30rpx;
+}
+.wrapper {
+  padding: 5px;
+}
+.iconfont {
+  display: inline-block;
+  padding: 8px 8px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.toolbar {
+  box-sizing: border-box;
+  /* border: 1px solid #ccc; */
+  border-bottom: 0;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+
+.ql-container {
+  box-sizing: border-box;
+  padding: 12px 15px;
+  width: 100%;
+  min-height: 30vh;
+  height: auto;
+  border: 1px solid #eee;
+  background: #fff;
+  /* margin-top: 20px; */
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.ql-active {
+  color: #06c;
+}
+
+/* ======================= */
+page{
+    width: 100%;
+    background:rgba(244,244,244,1);
+}
+.bottom{
+    width: 90%;
+    margin: 2% 5% 3% 5%;
+    
+}
+.datetimepick{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.datetimepick picker{
+    width: 50%;
+}
+.datetimepick .weui-input{
+    font-size: .9em;
+    font-weight: bold;
+    color: #2EA7E0;
+}
+.submitbtn{
+    background:#2EA7E0 ;
+    color: #fff;
+}
+.disabledbtn{
+    background:#ccc ;
+    color: #fff;
+}
+.submitbtn:active{
+    background:#69c0e9 ;
+}
+.weui-cell-self{
+    padding: 14px;
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+}
+.weui-cell-self:before{
+    content: '  ';
+    border-top: none;
+}
+.weui-cell-self textarea{
+    height: '';
+}
+.weui-cell-selfs .weui-cell{
+    padding: 14px;
+}
+.chooseplace{
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  right: 0;
+  top: 40%;
+  z-index: 50;
+}
+.rightimg{
+  width: 20rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 8rpx;
+}

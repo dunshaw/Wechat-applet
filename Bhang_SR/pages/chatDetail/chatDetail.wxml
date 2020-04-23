@@ -1,0 +1,9 @@
+<!--pages/chatDetail/chatDetail.wxml-->
+<view>
+  <customnav backbar="" text="{{nickname}}" />
+  <view style="height:{{46+statusBarHeight}}px;"></view> 
+  <chat
+	id="chat"
+	username="{{ username }}"
+	chatType="singleChat"></chat>
+</view>

@@ -1,0 +1,32 @@
+<!--pages/wxIM/wxIM.wxml-->
+<view style="width:100%;background: #fafafa;"> 
+  <customnav backbar="true" text="聊天" />
+  <view style="height:{{46+statusBarHeight}}px;"></view>
+  <view class="searchbar">
+    <view style="padding-top:20rpx;">
+    <icon class="searchbar-icon" type="search" size="14"></icon>
+    <input type="text" class="weui-search-bar__input searchbar-input" value="{{searchValue}}" placeholder="请输入姓名"  bindinput="inputSearch" />
+    </view>
+  </view>
+  <scroll-view scroll-y="true" class="chatlist" style="height:{{scrollHeight}}px">
+    <view class="chatlist-item" wx:for="{{searchValue==''?chathistorylist:newchathistorylist}}" wx:key="index" bindtap="chatDetail" data-item="{{ item }}">
+      <view>
+        <view class="em-msgNum" wx:if="{{ item.unReadCount > 0 || item.unReadCount == '99+' }}">{{ item.unReadCount }}</view>
+        <image wx:if="{{item.ext.userPicMy}}" src="{{baseImgUrl + item.ext.userPicMy}}"></image>
+        <image wx:else src="../../images/touxiang.png"></image>
+      </view>
+      <view class="chatlist-item-right">
+        <view class="chatlist-item-content">
+          <text class="username">{{item.nickname}}</text> 
+          <text class="usertime">{{item.time}}</text>
+        </view>
+        <text class="chatlist-item-words" wx:if="{{ item.msg.data[0].data }}">{{item.msg.data[0].data}}</text>
+        <text class="chatlist-item-words" wx:if="{{ item.msg.type == 'img' }}">[图片]</text>
+        <text class="chatlist-item-words" wx:if="{{ item.msg.type == 'audio' }}">[语音]</text>
+      </view>
+    </view>
+
+
+  </scroll-view>
+  <mytabbar />
+</view>

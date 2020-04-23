@@ -1,0 +1,109 @@
+/* pages/popularCity.wxss */
+.dingweicity-box{
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+}
+.dingweicity-text{
+  font-size:16px;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  line-height:20px;
+  margin-bottom: 20px;
+}
+.dingweicity-position-box{
+  display: flex;
+}
+.current-dingweicity,.again-position{
+  width:105px;
+  height:34px;
+  background:rgba(248,248,248,1);
+  border-radius:4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  font-size: 14px;
+  font-family:PingFang SC;
+  font-weight:400;
+}
+.current-dingweicity image,.again-position image{
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+}
+.again-position{
+  background:rgba(255,255,255,0);
+}
+.popularcity-bigbox{
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  margin: 50px 0;
+}
+.popularcity-bigbox-text{
+  font-size:16px;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  line-height:20px;
+  margin-bottom: 20px;
+}
+.popularcity-box{
+  display: flex;
+  flex-wrap: wrap;
+}
+.popularcity{
+  width:105px;
+  height:34px;
+  background:rgba(248,248,248,1);
+  border-radius:4px;
+  font-size:14px;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  line-height:20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px 10px 0;
+}
+.fengexian{
+  width: 100%;
+  height: 1px;
+  background:rgba(221,221,221,1);
+}
+
+.q-selecity{
+  margin: 50rpx 40rpx 0;
+}
+.q-citybox{
+  width: 100%;
+}
+.q-cityInitials{
+  font-size:14px;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  line-height:20px;
+}
+.q-cityname{
+  margin: 40rpx 0;
+  font-size:16px;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  line-height:20px;
+}
+.q-right-letter{
+  width: 24rpx;
+  position: fixed;
+  right: 0;
+  top: 25rpx;
+  font-size:12px;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(46,167,224,1);
+  line-height:22px;
+}

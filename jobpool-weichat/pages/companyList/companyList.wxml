@@ -1,0 +1,56 @@
+<!--pages/companyList/companyList.wxml-->
+<view wx:if="{{!islogin}}" class="islogin" bindtap="login">
+  <image src="../../images/nohave.png"></image>
+  <text>请先登录/注册</text>
+</view>
+
+<view class="header">
+  <view class='search'>
+    <view>
+      <image class="searchbar-icon" src='../../images/search.png'></image>
+      <input type="text" class="weui-search-bar__input searchbar-input" value="{{searchValue}}" placeholder="请输入公司全称或简称"  bindinput="inputSearch" />
+    </view>
+    <!-- <text class="clearsearch"></text> -->
+  </view>
+</view>
+<view class="filterLable">
+  <view class='filter' bindtap='selectShow' data-id='1'>{{city ? city : '城市' }}<view class='fa fa-sort-desc'></view></view>
+  <view class='filter {{selectShow == 2?"active":""}}' bindtap='selectShow' data-id='2'>筛选<view class='fa fa-sort-desc'></view></view>
+  <view class='filter {{selectShow == 3?"active":""}}' bindtap='selectShow' data-id='3'>{{ordertext}}<view class='fa fa-sort-desc'></view></view>
+</view>
+<scroll-view scroll-y="true" style="height:{{scrollHeight}}px;" class="{{selectShow?'scrollbackbg':''}} selectbox" bindtap="closeModel" wx:if="{{selectShow}}">
+  <view wx-if="{{selectShow == 2}}" catchtap='choiceScale'>
+    <view class='autoscreen'>
+      <view class='modelTitle'>公司规模</view>
+      <view class='modelCon'>
+        <view class='modelConName {{item.checked?"checked":""}}' data-value='{{item.id}}' catchtap='choiceScale' wx:for='{{scaleList}}' wx:key="index">{{item.name}}</view>
+      </view>
+    </view>
+    <view class='autoscreen'>
+      <view class='modelTitle'>所属行业</view>
+      <view class='modelCon'>
+        <view class='modelConName {{item.checked?"checked":""}}' data-value='{{item.id}}' catchtap='choiceIndustry' wx:for='{{industryList}}' wx:key="index">{{item.name}}</view>
+      </view>
+    </view>
+    <view class='sureBtn'>
+      <view class='cancel' bindtap='cancelAllLable'>重置</view>
+      <view class='sure' bindtap='submitValue'>确定</view>
+    </view>
+  </view>
+  <view class='automatic' wx-if="{{selectShow == 3}}" catchtap='choiceOrder'>
+    <view class='autoMode {{order == "AUTO"?"active":""}}' data-value='AUTO' catchtap='choiceOrder'>推荐排序</view>
+    <view class='autoMode {{order == "NEARPOPJOB"?"active":""}}' data-value='NEARPOPJOB' catchtap='choiceOrder'>最近发布职位</view>
+  </view>
+</scroll-view>
+
+<scroll-view scroll-y="true" style="height:{{scrollHeight}}px;" class="companybox" bindscrolltolower="loadData">
+  <view class="companyItem" wx:for="{{companyList}}" wx:key="index" bindtap="gocompanyInfo" data-id='{{item.id}}'>
+    <view><image src="{{imgIp + item.logo}}" class="companyImg"></image></view>
+    <view class="company-content">
+      <view class="company-content-first"><h3>{{item.alias}}</h3> <span class='zizhirenzheng'>资质认证</span></view>
+      <view class="company-content-secend">全称：{{item.name}}</view>
+      <view class="company-content-third">{{item.area}}：{{item.scale}} <span>|</span> {{item.industry}}</view>
+    </view>
+    <view class="company-right">在招职位：{{item.onlineCount}}</view>
+  </view>
+</scroll-view>

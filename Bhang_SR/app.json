@@ -1,0 +1,72 @@
+{
+  "pages": [
+    "pages/pulse/pulse",
+    "pages/index/index",
+    "pages/home/home",
+    "pages/jobmsg/jobmsg",
+    "pages/companylist/companylist",
+    "pages/leadingView/leadview",
+    "pages/address/address",
+    "pages/leadingResult/leadingResult",
+    "pages/entryManagement/entryManagement",
+    "pages/entryMsg/entryMsg",
+    "pages/wxIM/wxIM",
+    "pages/mine/mine",
+    "pages/shareUrl/shareUrl",
+    "pages/chatDetail/chatDetail",
+    "pages/chatroom/chatroom",
+    "pages/invitation/invitation",
+    "pages/joblist/joblist"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Job Pool",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#999",
+    "selectedColor": "#2EA7E0",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/invitation/invitation",
+        "text": "邀约",
+        "iconPath": "images/invitation.png",
+        "selectedIconPath": "images/invitation-in.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "面试",
+        "iconPath": "images/interviewManagement-no.png",
+        "selectedIconPath": "images/interviewManagement.png"
+      },
+      {
+        "pagePath": "pages/entryManagement/entryManagement",
+        "text": "入职",
+        "iconPath": "images/entryManagement-no.png",
+        "selectedIconPath": "images/entryManagement.png"
+      },
+      {
+        "pagePath": "pages/wxIM/wxIM",
+        "text": "聊天",
+        "iconPath": "images/wxim.png",
+        "selectedIconPath": "images/wxim-in.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine-in.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+}

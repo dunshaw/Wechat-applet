@@ -1,0 +1,74 @@
+
+<view>
+  <customnav backbar="true" text="邀约" />
+  <view style="height:{{46+statusBarHeight}}px;"></view>
+  <van-loading color="#1989fa" wx:if="{{freeshFlag}}" style="position:fixed;top:{{105+statusBarHeight}}px;left:45%;z-index: 99;"  />
+  <view class="pageContent">
+    <view class="fiexdbox" style="position:fixed;top:{{46+statusBarHeight}}px;z-index: 99;">
+      <view class="batchBar {{batchFlag?'batchBar-in':''}}">
+        <view class="checkbox-left">
+            <view style="color:#2EA7E0;" bindtap="batchBack">
+              <image class="entrybackimg" src="/images/entryback.png" />
+              返回
+            </view>
+            <text>已选择{{checkedresult.length}}项</text>
+        </view>
+        <van-radio-group value="{{ ischeckedalltype }}" bind:change="onChange" class="checkedalltype">
+            <van-radio name="1" shape="square" checked-color="#2EA7E0">全部选择</van-radio>
+            <van-radio name="2" shape="square" checked-color="#2EA7E0">本页选择</van-radio>
+        </van-radio-group>
+      </view>
+      <view class="header">
+        <view class="header-left">
+          <view class="tabBar {{tabbarNum==1?'actived':''}}" bindtap="tabbarClick" data-num="1">新简历</view>
+          <view class="tabBar {{tabbarNum==2?'actived':''}}" bindtap="tabbarClick" data-num="2">已查看</view>
+        </view>
+        <view class="header-right">
+          <image bindtap="searchClick" class="seachimg" src="/images/seach.png" />
+        </view>
+      </view>
+      <view class="searchbar {{searchBar?'searchbar-in':''}}">
+        <view style="padding-top:20rpx;">
+          <icon class="searchbar-icon" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input searchbar-input" value="{{searchValue}}" placeholder="请输入姓名/电话/职位/公司"  bindinput="inputSearch" />
+        </view>
+      </view>
+    </view>
+    <view class="entrylist {{searchBar?'entrylist-in':''}}">
+      <van-checkbox-group value="{{ checkedresult }}" >
+        <van-swipe-cell class="van-swipecell" right-width="{{ 150 }}" wx:for="{{entryList}}" wx:key="index" bind:close="onClose">
+          <van-cell-group>
+          <view class="entrybox">
+              <view class="box-top">
+                <view class="box-top-compalias">{{item.compalias}}</view>
+                <view class="box-top-jobname">{{item.jobName}}</view>
+                <van-checkbox catch:tap="noop" wx:if='{{batchFlag}}' disabled="{{item.status!='sendOffer'}}" class="checkboxes-{{ index }} checkboxitem" name="{{ item.applyId }}" shape="square" checked-color="#2EA7E0" />
+              </view>
+              <view class="box-bottom">
+                <view class="box-bottom-item {{item.sex=='female'?'userGirl':''}}">{{item.userName}}</view>
+                <view class="box-bottom-item">{{item.age}}岁</view>
+                <view class="box-bottom-item">{{item.recordOfFormalSchoolingName}}</view>
+                <!-- <view class="box-bottom-item">{{item.phone}}</view> -->
+                <view class='box-bottom-item' bindtap="openActionSheet" data-phonecall='{{item.phone}}'>{{item.phone}}</view>
+              </view>
+            </view>
+          </van-cell-group>
+          <view slot="right" class="rightCell">
+            <view bindtap="enterReject" data-applyid="{{item.applyId}}" hidden="{{userReject}}" class="enterReject">不合适</view>
+            <view bindtap="enterResolve" data-item="{{item}}" hidden="{{userEntry}}" class="enterResolve" >邀请</view>
+          </view>
+        </van-swipe-cell>
+      </van-checkbox-group>
+    </view>
+    <!-- 数据空白 -->
+    <view class="home-msgInfo" wx:if="{{entryList.length == 0}}">
+      <image class="home-nodata-img" src="/images/nodata.png"></image> 
+      <text style="display:block;">暂无数据</text>  
+    </view>
+  </view>
+  <view class="more-icon-box">
+    <image src="../../images/invi-add.png" class="more-icon-item {{moreFlag?'more-icon-item-up':''}}" bindtap="gotoJoblist" data-info="import"></image>
+    <image src="../../images/invi-result.png" class="more-icon-item {{moreFlag?'more-icon-item-up1':''}}" bindtap="gotoJoblist" data-info="result"></image>
+    <image src="../../images/invi-more.png" class="more-icon-menu {{moreFlag?'more-icon-menu-rotate':''}}" bindtap="showMoreflag"></image>
+  </view>
+</view>

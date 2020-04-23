@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "customnav": "/components/nav/nav",
+    "van-tree-select": "/miniprogram_npm/vant-weapp/tree-select/index"
+  }
+}

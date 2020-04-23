@@ -1,0 +1,77 @@
+/* pages/personAdvantage/personAdvantage.wxss */
+
+.workDescribe,.textView{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.textareaShell{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+}
+.textStyle{
+  width: 100%;
+  height: 400rpx;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  line-height: 38rpx;
+  color: #666;
+  border-bottom: 1px solid #ddd;
+}
+.textTitle{
+  font-size: 28rpx;
+  color: #999;
+  line-height: 28rpx;
+}
+.textareaNub{
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 30rpx;
+}
+.seeOther{
+  width: 100%;
+  overflow: hidden;
+  margin: 0 0 50rpx 0;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+}
+.seeOtherTitle{
+  font-size: 28rpx;
+  color: #333;
+  line-height: 28rpx;
+}
+.changeOne{
+  color: #2EA7E0;
+  float: right;
+}
+.otherConShell{
+  width: 100%;
+  overflow: hidden;
+  margin: 30rpx 0 0 0;
+  padding: 30rpx;
+  box-sizing: border-box;
+  background-color: #F8F8F8;
+}
+.otherCon{
+  font-size: 28rpx;
+  color: #999;
+  line-height: 38rpx;
+}
+.submitForm{
+  width: 690rpx;
+  height: 80rpx;
+  margin: 30rpx;
+  padding: 0;
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #2EA7E0;
+  border-radius: 10rpx;
+}

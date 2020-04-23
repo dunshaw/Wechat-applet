@@ -1,0 +1,252 @@
+<!--pages/app/app.wxml-->
+<movable-area style="pointer-events: none;height:{{windowHeight}}px;width:{{movableWidth}}px;position:absolute;left:0px;top:0px;z-index:999;" wx:if="{{floatFlag && !ejectFlag}}">
+  	<movable-view direction="all" inertia="true" x="{{x}}" y="{{y}}" bindchange="eventMove" style="pointer-events: auto;height: 120rpx; width: 120rpx;" >
+    <image class='floatclose' src='../../images/floatclose.png' catchtap="closeEject" data-info='float'></image>
+    <image class='float-Img' src='{{ imgIp + floatInfo.pictureLink}}' catchtap="clickadvertise" data-type="float" data-data="{{floatInfo}}"></image>
+	</movable-view>
+</movable-area>
+<scroll-view scroll-y="true" style="height:{{windowHeight}}px" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}"
+  refresher-threshold="{{100}}"
+  refresher-default-style="black"
+  refresher-background="#fff"
+  refresher-triggered="{{triggered}}"
+  bindrefresherrefresh="onRefresh">
+  <view class='Shell'>
+    <view class='search'>
+      <view class='yourAddress' bindtap="selecity">{{city}}</view><view class='fa fa-sort-down'></view>
+      <view class="searchWord" bindtap="jump" data-url='search' data-cityCode="{{cityCode}}" data-city="{{city}}">
+        <image class='searchWordIcon' src='../../images/search.png'></image>
+        搜索职位/公司/福利
+      </view>
+      <!-- <camera mode="scanCode" bindscancode="saook" style="width: 100%; height: 600rpx;"></camera> -->
+      <view class="saoyisaobtn" bindtap="saoma"><image class="saoyisao" src="../../images/sao.png"></image></view>
+      
+      <!-- <image class='Location' src='../../images/Location.png' bindtap='dingwei'></image> -->
+    </view>
+    <view class="page-section page-section-spacing swiper banner">
+      <swiper indicator-dots="true" indicator-color='rgba(0, 0, 0, .3)' autoplay="true" circular="true" interval="3000" duration="500">
+        <block wx:for='{{bannerList}}' wx:key='index'>
+          <swiper-item>
+            <image class='bannerImg' src='{{imgIp + item.pictureLink}}' bindtap="clickbanner" data-id="{{item.id}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+  <view class='indexClass'>
+    <view class="xuanxiang">
+      <view class='classIcon' bindtap='jump' data-id='1' data-url='searchResult' data-cityCode="{{cityCode}}" data-city="{{city}}">
+        <image class='iconImg' src='../../images/indexIcon1.png'></image>
+        <text>全部职位</text>
+      </view>
+      <view class='classIcon' bindtap='jump' data-url='tanlent'>
+        <image class='iconImg' src='../../images/indexIcon6.png'></image>
+        <text>人才共享</text>
+      </view>
+      <view class='classIcon' bindtap='jump' data-id='2' data-url='searchResult' data-cityCode="{{cityCode}}" data-city="{{city}}">
+        <image class='iconImg' src='../../images/indexIcon2.png'></image>
+        <text>现场直面会</text>
+      </view>
+      <view class='classIcon' bindtap='jump' data-id='3' data-url='searchResult' data-cityCode="{{cityCode}}" data-city="{{city}}">
+        <image class='iconImg' src='../../images/indexIcon3.png'></image>
+        <text>在线直聘</text>
+      </view>
+      <!-- <view class='classIcon' bindtap='jump' data-id='4' data-url='searchResult'>
+        <image class='iconImg' src='../../images/indexIcon4.png'></image>
+        <text>荐者有奖</text>
+      </view> -->
+      <view class='classIcon' bindtap='jump' data-id='5' data-url='searchResult' data-cityCode="{{cityCode}}" data-city="{{city}}">
+        <image class='iconImg' src='../../images/indexIcon5.png'></image>
+        <text>普工专栏</text>
+      </view>
+    </view>
+    <view class='articleShell'>
+      <swiper class='article' indicator-dots="{{false}}" autoplay="true"  circular="true" interval="3000" duration="500" vertical="true">
+        <block wx:for="{{articleList}}" wx:key='index'>
+          <swiper-item>
+            <image class='articleIcon' src='../../images/indexArticleIcon.png'></image>
+            <text class='articleTitle' data-id="{{item.id}}" bindtap="seenews">{{item.title}}</text>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+  <view class='content' wx:for='{{TopcontentList}}' wx:key='index' bindtap='jump' data-id='{{item.job.id}}' data-interviewTime="{{item.job.interviewTime}}" data-cityCode="{{cityCode}}">
+    <view class='information'>
+      <view class='leftCon'>
+        <view class='imgAndTitle'>
+          <image class="tuijianclass" src="../../images/toutiao.png" ></image>
+          <image class='companyIcon' src='{{imgIp + item.companyLogo.sourcePath}}'></image>
+          <view class="compan-box">
+            <text class='Title'>{{item.job.name}}</text>
+            <image wx:if="{{item.job.general}}" src="../../images/pugong.png" class="companypg"></image>
+            <image wx:if="{{item.job.popular}}" src="../../images/hot.png" class="companyhot"></image>
+            <image wx:if="{{item.job.isRichText}}" src="../../images/fuwenben.png" class="companypg"></image>
+          </view>
+          <text class='companyName'>{{item.job.companyName}}</text>
+        </view>
+        <view class='require'>{{item.job.area}} | {{item.job.gongzuonianxian}} | {{item.job.xueliyaoqiu}} | 距离 <text style='color:#2EA7E0'>{{item.job.distance}}</text> 公里</view>
+        <view class="wm_reward" wx:if='{{item.job.recommendReward || item.job.recommendedAwardNew}}'>
+          <view class='w_reward' wx:if='{{item.job.femaleReward && item.job.recommendReward}}'>女奖{{item.job.femaleReward}}</view>
+          <view class='m_reward' wx:if='{{item.job.maleReward && item.job.recommendReward}}'>男奖{{item.job.maleReward}}</view>
+          <view class='r_reward' wx:if='{{item.job.recommendedAwardNew && item.job.recommendAmount}}'>推荐{{item.job.recommendAmount}}</view>
+        </view>
+      </view>
+      <view class='rightCon'>
+        <view class='salary' wx:if="{{item.job.salaryMin == item.job.salaryMax}}">{{item.job.salaryMin}}k</view>
+        <view class='salary' wx:else>{{item.job.salaryMin}}k~{{item.job.salaryMax}}k</view>
+        <view class='typeShell'>
+          <text class='types type1' wx:if='{{item.job.type == "online"?true:false}}'>在线直聘</text>
+          <text class='types type2' wx:if='{{item.job.type == "scene"?true:false}}'>现场直面会</text>
+        </view>
+      </view>
+    </view>
+    <view class='welfareShell {{ item.job.femaleReward != null ? "q-cheap" : ""}}'>
+      <text class='welfare' wx:for='{{item.labels}}' wx:key='index' >{{item.text}}</text>
+    </view>
+    <view class='timeAndNumber'>
+      <view class='time'>面试时间：<text>{{item.job.interviewTimeString ==null?'等待通知':item.job.interviewTimeString}}</text></view>
+      <view class='number'>已申请<text> {{item.job.applyNumber}} </text>人</view> 
+    </view>
+  </view>
+  <view class="filterLable topnav">
+    <view class='filter' bindtap='showScreenCon' data-id='1'>{{selectedName ? selectedName : '全' + city }}<view class='fa fa-sort-desc'></view></view>
+    <view class='filter' bindtap='showScreenCon' data-id='3'>面试时间<view class='fa fa-sort-desc'></view></view>
+    <view class='filter' bindtap='showScreenCon' data-id='2'>筛选<view class='fa fa-sort-desc'></view></view>
+    <view class='filter' bindtap='showScreenCon' data-id='4'>推荐<view class='fa fa-sort-desc'></view></view>
+  </view>
+
+  <view class="q-recommend-set" wx:if="{{wantjobFlag}}">
+    <image src="../../images/guanbi.png" class="q-recommend-guanbi" bindtap="closewantjob"></image>
+    <image src="../../images/Recommend.png" class="q-recommend-backset"></image>
+    <view class="q-recommend-set-textbox">
+      推荐不太准确？ <text class="q-recommend-set-click" bindtap="recommendset">点我设置</text>
+    </view>
+  </view>
+
+  <view class='content' wx:for='{{contentList}}' wx:key='index' bindtap='jump' data-id='{{item.job.id}}' data-interviewTime="{{item.job.interviewTime}}" data-cityCode="{{cityCode}}">
+    <view class='information'>
+      <view class='leftCon'>
+        <view class='imgAndTitle'>
+          <image class="tuijianclass" src="../../images/tuijian.png" wx-if="{{item.job.showType=='recommend'}}"></image>
+          <image class="tuijianclass" src="../../images/gongxiang.png" wx-if="{{item.job.jobShared && item.job.showType!='recommend'}}"></image>
+          <image class='companyIcon' src='{{imgIp + item.companyLogo.sourcePath}}'></image>
+          <view class="compan-box">
+            <text class='Title'>{{item.job.name}}</text>
+            <image wx:if="{{item.job.general}}" src="../../images/pugong.png" class="companypg"></image>
+            <image wx:if="{{item.job.popular}}" src="../../images/hot.png" class="companyhot"></image>
+            <image wx:if="{{item.job.isRichText}}" src="../../images/fuwenben.png" class="companypg"></image>
+          </view>
+          <text class='companyName'>{{item.job.companyName}}</text>
+        </view>
+        <view class='require'>{{item.job.area}} | {{item.job.gongzuonianxian}} | {{item.job.xueliyaoqiu}} | 距离 <text style='color:#2EA7E0'>{{item.job.distance}}</text> 公里</view>
+        <view class="wm_reward" wx:if='{{item.job.recommendReward || item.job.recommendedAwardNew}}'>
+          <view class='w_reward' wx:if='{{item.job.femaleReward && item.job.recommendReward}}'>女奖{{item.job.femaleReward}}</view>
+          <view class='m_reward' wx:if='{{item.job.maleReward && item.job.recommendReward}}'>男奖{{item.job.maleReward}}</view>
+          <view class='r_reward' wx:if='{{item.job.recommendedAwardNew && item.job.recommendAmount}}'>推荐{{item.job.recommendAmount}}</view>
+        </view>
+      </view>
+      <view class='rightCon'>
+        <view class='salary' wx:if="{{item.job.salaryMin == item.job.salaryMax}}">{{item.job.salaryMin}}k</view>
+        <view class='salary' wx:else>{{item.job.salaryMin}}k~{{item.job.salaryMax}}k</view>
+        <view class='typeShell'>
+          <text class='types type1' wx:if='{{item.job.type == "online"?true:false}}'>在线直聘</text>
+          <text class='types type2' wx:if='{{item.job.type == "scene"?true:false}}'>现场直面会</text>
+        </view>
+      </view>
+    </view>
+    <view class='welfareShell {{ item.job.femaleReward != null ? "q-cheap" : ""}}'>
+      <text class='welfare' wx:for='{{item.labels}}' wx:key='index' >{{item.text}}</text>
+    </view>
+    <view class='timeAndNumber'>
+      <view class='time'>面试时间：<text>{{item.job.interviewTimeString ==null?'等待通知':item.job.interviewTimeString}}</text></view>
+      <view class='number'>已申请<text> {{item.job.applyNumber}} </text>人</view> 
+    </view>
+  </view>
+
+  <view class='vitaShell' wx:if="{{showToPerfect}}">
+    <view class='vitaCon'>
+      <image class='toPerfectIcon' src='../../images/icon1.png'></image>
+      <view class='conView'>
+        <image class='conViewImg' src='../../images/bg.png'></image>
+        <view class='conViewP1'>完善简历  轻松拿offer</view>
+        <view class='conViewP2'>资料填写不完整，请完善资料信息</view>
+        <view class='toPerfect'>马上完善</view>
+      </view>
+      <image class='closeThis' src='../../images/close.png' bindtap='closeToPerfect'></image>
+    </view>
+  </view>
+
+  
+</scroll-view >
+<view class='screenCondition' wx-if="{{sureThisValue}}">
+  <view class="filterLable">
+    <view class='filter {{selectShow == 1?"active":""}}' bindtap='selectShow' data-id='1'>{{selectedName ? selectedName : '全' + city }}<view class='fa fa-sort-desc'></view></view>
+    <view class='filter {{selectShow == 3?"active":""}}' bindtap='selectShow' data-id='3'>面试时间<view class='fa fa-sort-desc'></view></view>
+    <view class='filter {{selectShow == 2?"active":""}}' bindtap='selectShow' data-id='2'>筛选<view class='fa fa-sort-desc'></view></view>
+    <view class='filter {{selectShow == 4?"active":""}}' bindtap='selectShow' data-id='4'>推荐<view class='fa fa-sort-desc'></view></view>
+  </view>
+
+  <scroll-view scroll-y="{{true}}" style="height:100%;">
+    <view class='allAddress' wx-if="{{selectShow == 1?true:false}}">
+      <view class='addressName {{choiceRegionCode == cityCode?"active":""}}' bindtap='sureThisValue' data-id='{{cityCode}}'>{{city}}</view>
+      <view class='addressName {{choiceRegionCode == item.code?"active":""}}' wx:for='{{regionList}}' wx:key='index' bindtap='sureThisValue' data-id='{{item.code}}'>{{item.name}}</view>
+    </view>
+    <view class='screen' wx-if="{{selectShow == 2?true:false}}">
+      <view class='model'>
+        <view class='modelTitle'>薪资范围</view>
+        <text class="salaryshow" wx:if="{{minSalary && maxSalary && minSalary!=maxSalary}}">{{minSalary}}k~{{maxSalary}}k</text>
+        <text class="salaryshow" wx:elif="{{minSalary && maxSalary && minSalary==maxSalary}}">{{minSalary}}k</text>
+        <text class="salaryshow" wx:else>{{salarytext}}</text>
+        <zy-slider id="zy-slider" minValue="{{low}}" maxValue="{{heigh}}" min="0" max="46" catch:lowValueChange="lowValueChangeAction" catch:heighValueChange="heighValueChangeAction" />
+      </view>
+      <view class='model'>
+        <view class='modelTitle'>职位特点</view>
+        <view class='modelCon'>
+          <view class='modelConName {{item.checked?"checked":""}}' wx:for='{{traitList}}' wx:key='index' data-value='{{item.value}}' bindtap='choiceTrait'>{{item.name}}</view>
+        </view>
+      </view>
+      <view class='model'>
+        <view class='modelTitle'>福利标签</view>
+        <view class='modelCon'>
+          <view class='modelConName {{item.isChecked?"checked":""}}' wx:for='{{labelList}}' wx:key='index' bindtap='choiceThisLable' data-id='{{item.id}}' data-index='{{index}}'>{{item.text}}</view>
+        </view>
+      </view>
+      <view class='model'>
+        <view class='modelTitle'>学历要求</view>
+        <view class='modelCon'>
+          <view class='modelConName {{item.checked?"checked":""}}' data-value='{{item.value}}' bindtap='choiceDiploma' wx:for='{{diplomaList}}' wx:key="index">{{item.name}}</view>
+        </view>
+      </view>
+      <view class='sureBtn'>
+        <view class='cancel' bindtap='cancelAllLable'>重置</view>
+        <view class='sure' bindtap='submitValue'>确定</view>
+      </view>
+    </view>
+    <view class='choiceTime' wx-if="{{selectShow == 3?true:false}}">
+      <view class='timeSlot {{interViewTime == "0"?"active":""}}' data-date='0' bindtap='choiceTime'>不限</view>
+      <view class='timeSlot {{interViewTime == timeList[0].time?"active":""}}' data-date='{{timeList[0].time}}' bindtap='choiceTime'>今天（{{timeList[0].month}}月{{timeList[0].day}}日）</view>
+      <view class='timeSlot {{interViewTime == timeList[1].time?"active":""}}' data-date='{{timeList[1].time}}' bindtap='choiceTime'>明天（{{timeList[1].month}}月{{timeList[1].day}}日）</view>
+      <view class='timeSlot {{interViewTime == timeList[2].time?"active":""}}' data-date='{{timeList[2].time}}' bindtap='choiceTime'>周{{timeList[2].week}}（{{timeList[2].month}}月{{timeList[2].day}}日）</view>
+      <view class='timeSlot {{interViewTime == timeList[3].time?"active":""}}' data-date='{{timeList[3].time}}' bindtap='choiceTime'>周{{timeList[3].week}}（{{timeList[3].month}}月{{timeList[3].day}}日）</view>
+    </view>
+    <view class='automatic' wx-if="{{selectShow == 4?true:false}}">
+      <view class='autoMode {{order == "auto"?"active":""}}' data-value='auto' bindtap='choiceOrder'>推荐排序</view>
+      <view class='autoMode {{order == "salary"?"active":""}}' data-value='salary' bindtap='choiceOrder'>月薪从高到低</view>
+      <view class='autoMode {{order == "distance"?"active":""}}' data-value='distance' bindtap='choiceOrder'>离家最近</view>
+      <view class='autoMode {{order == "companySize"?"active":""}}' data-value='companySize' bindtap='choiceOrder'>公司规模从大到小</view>
+    </view>
+  </scroll-view>
+
+</view>
+<button open-type='openSetting' bindopensetting="openSetting" wx:if="{{noposition}}" class="noposition">获取定位失败，部分功能可能不能正常使用,点击重新设置定位</button>
+<view class="q-nothing" wx:if="{{nothing}}">
+  <image src="../../images/nohave.png"></image>
+  <view>什么都没有啊~</view>
+</view>
+<view class="eject-bg" wx:if="{{ejectFlag}}">
+  <view class="eject-content">
+    <image class='eject-Img' src='{{ imgIp + ejectInfo.pictureLink}}' bindtap="clickadvertise" data-data="{{ejectInfo}}" data-type="eject"></image>
+  </view>
+  <image class='closeEject' src='../../images/close.png' data-info='eject' bindtap='closeEject' wx:if="{{closeEject}}"></image>
+</view>

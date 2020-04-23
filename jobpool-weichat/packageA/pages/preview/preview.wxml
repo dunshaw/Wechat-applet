@@ -1,0 +1,110 @@
+<!--pages/preview/preview.wxml-->
+<view class="q-block1">
+  <view class="q-block1-left">
+    <view class="q-block1-left-name">
+      <view>{{name}}</view>
+      <image src="{{sex == 'male' ? '../../../images/man.png' : '../../../images/woman.png'}}"></image>
+    </view>
+    <view class="q-block1-left-comp">
+      <text>{{ worklist.length == 0 ? '' : worklist[0].companyName }}·</text>
+      <text>{{ worklist.length == 0 ? '' : worklist[0].position }}</text>
+    </view>
+    <view class="q-block1-left-exp">
+      <text>{{workyear}}年经验·</text>
+      <text>{{edu}}·</text>
+      <text>{{age}}岁</text>
+    </view>
+  </view>
+  <image src="{{avatar == 'null' || avatar == null ? '../../../images/peopleDefault.png' : imgip + avatar}}" class="q-userhead"></image>
+</view>
+<view class="q-fengexian"></view>
+<view class="q-block2">
+  <view class="q-block2-left">
+    <image src="../../images/phone.png"></image>
+    <text>联系电话</text>
+  </view>
+  <text class="q-block2-right">{{phone}}</text>
+</view>
+<view class="q-fengexian"></view>
+<view class="q-block3">
+  <view class="q-block3-title">
+    <image src="../../images/blueIcon.png"></image>
+    <text>个人优势</text>
+  </view>
+  <view class="q-block3-content">
+    
+    {{personalAdvantage ? personalAdvantage : ''}}
+                        
+  </view>
+</view>
+<view class="q-fengexian"></view>
+<view class="q-block4">
+  <view class="q-block4-title">
+    <view class="q-block4-title-left">
+      <image src="../../images/blueIcon.png"></image>
+      <text>求职意向</text>
+    </view>
+    <view class="q-block4-title-right">{{jobStatus ? jobStatus : ''}}</view>
+  </view>
+  <view class="q-block4-industry">
+    <view class="q-block4-industry-title">期望行业</view>
+    <view class="q-block4-industry-contetn">{{expectIndustryName ? expectIndustryName : ''}}</view>
+  </view>
+  <view class="q-block4-job">
+    <view class="q-block4-job-title">期望职位</view>
+    <view class="q-block4-job-contetn">{{jobHuntingIntention ? jobHuntingIntention : ''}}</view>
+  </view>
+  <view class="q-block4-salary">
+    <view class="q-block4-salary-title">期望薪资</view>
+    <view class="q-block4-salary-contetn">{{(minExpectSalary ? minExpectSalary : 0) /1000}}K-{{(maxExpectSalary ? maxExpectSalary : 0) /1000}}K</view>
+  </view>
+  <view class="q-block4-addr">
+    <view class="q-block4-addr-title">期望工作地</view>
+    <view class="q-block4-addr-contetn">{{expectWorkPlaceName ? expectWorkPlaceName : ''}}</view>
+  </view>
+</view>
+<view class="q-fengexian"></view>
+<view class="q-block5">
+  <view class="q-block5-title">
+    <image src="../../../images/blueIcon.png"></image>
+    <text>工作经历</text>
+  </view>
+  <block wx:for="{{worklist}}" wx:key="index">
+    <view class="q-block5-comp">
+      <view class="q-block5-comp-name">{{item.companyName}}</view>
+      <view class="q-block5-comp-time">{{item.time}}</view>
+    </view>
+    <view class="q-block5-position">
+      {{item.position}}
+    </view>
+    <view class="q-block5-content">
+      
+    {{item.jobDescription}}
+                          
+    </view>
+  </block>
+</view>
+<view class="q-fengexian"></view>
+<view class="q-block6">
+  <view class="q-block6-title">
+    <image src="../../images/blueIcon.png"></image>
+    <text>教育经历</text>
+  </view>
+  <block wx:for="{{edulist}}">
+    <view class="q-block6-school">
+      <view class="q-block6-school-name">{{item.schoolName}}</view>
+      <view class="q-block6-school-time">{{item.startTimeYear}}.{{item.startTimeMonth}} - {{item.endTimeYear}}.{{item.endTimeMonth}}</view>
+    </view>
+    <view class="q-block6-edu">{{item.recordOfFormalSchoolingName}}  {{item.major}}</view>
+  </block>
+</view>
+<view class="q-fengexian"></view>
+<view class="q-block7">
+  <view class="q-block7-title">
+    <image src="../../images/blueIcon.png"></image>
+    <text>学历认证</text>
+  </view>
+  <view class="q-block7-right">{{degreeCertificationStatus}}</view>
+</view>
+<image src="{{degreeCertificationFilePath ? imgip + degreeCertificationFilePath : ''}}" class="q-authentication"></image>
+<view class="q-fengexian"></view>

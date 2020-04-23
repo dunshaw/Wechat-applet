@@ -1,0 +1,409 @@
+<!--pages/ProgressDetail/ProgressDetail.wxml-->
+<view class='progress'>
+    <image class='companyIcon' src='{{content.companyLogo == null?"../../images/ComDefault.png":imgIp + content.companyLogo}}'></image>
+    <view class='jobAndComName'>
+      <view class='job'>{{content.jobName}}</view>
+      <view class='companyName'>{{content.companyName}}</view>
+    </view>
+    <view class='salary'>
+      <view class='salaryNub' wx:if="{{content.minSalary!=content.maxSalary}}">{{content.minSalary}}K~{{content.maxSalary}}K</view>
+    </view>
+</view>
+<view class='allProgress'>
+  <view class='ProgressDetailShell'>
+  <view class='ProgressDetail' wx:if='{{status24 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status24.title}}</view>
+        <view class='conTime'>{{status24.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle' wx:if="{{status24.content !=null}}">{{status24.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  <view class='ProgressDetail' wx:if='{{status21 != null}}'>
+    <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status21.title}}</view>
+        <view class='conTime'>{{status21.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle'>{{status21.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status10 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status10.title}}</view>
+        <view class='conTime'>{{status10.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle' wx:if="{{status10.content !=null}}">被拒原因：{{status10.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status9 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status9.title}}</view>
+        <view class='conTime'>{{status9.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <view class='TimeTitle'>入职时间：</view>
+            <view class='TimeCon'>{{status9.content.entryTime}}</view>
+          </view>
+          <view class='viewDiv address-maker'>
+            <!--<view class='fa fa-map-marker'></view>-->
+            <view class='AddressTitle'>入职地点：</view>
+            <view class='AddressCon'>{{status9.content.entryLocation}}</view>
+          </view>
+          <view class='viewDiv'>
+            <text class='PeopleTitle'>联系人　：</text>
+            <view class='PeopleCon'>{{status9.content.entryContact}}</view>
+          </view>
+          <view class='viewDiv'>
+            <view class='PhoneTitle'>联系电话：</view>
+            <view class='PhoneCon'>{{status9.content.entryContactNumber}}</view>
+          </view>
+          <view class='viewDiv'>
+            <text class='RemarksTitle'>备　　注：</text>
+            <view class='RemarksCon' wx:if='{{status9.content.entryRemarks!=null}}'>
+              <text wx:if="{{jobType=='scene'}}" style="color:#2EA7E0;" bindtap="richtext">点击查看详细信息</text>
+              <text wx:else>{{status9.content.entryRemarks}}</text>
+            </view>
+          </view>
+          <!--<view class='viewDiv'>
+            <view class='TipsTitle'>温馨提示：</view>
+            <view class='TipsCon'>您的简历过于简单，建议您在面试前先完善或上传您的简历，详细填写工作经历、教育经历和个人优势等内容</view>
+          </view>-->
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status14 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status14.title}}</view>
+        <view class='conTime'>{{status14.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle' wx:if="{{status14.content !=null}}">{{status14.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status11 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status11.title}}</view>
+        <view class='conTime'>{{status11.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle' wx:if="{{status11.content !=null}}">{{status11.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class='ProgressDetail' wx:if='{{status20 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status20.title}}</view>
+        <view class='conTime'>{{status20.time}}</view>
+      </view>
+    </view>
+    <!-- 屏蔽复试结束状态 -->
+    <view class='ProgressDetail' wx:if='{{status8 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status8.title}}</view>
+        <view class='conTime'>{{status8.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle' wx:if="{{status8.content !=null}}">{{status8.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status7 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell' bindtap="saoma">
+        <view class='conTitle'>{{status7.title}}</view>
+        <view class='conTime'>{{status7.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle'>{{status7.content}}\n
+            温馨提示：面试过程中如果企业以任何方式索要钱财，请勿相信并及时举报！
+            </text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status13 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status19.title}}</view>
+        <view class='conTime'>{{status19.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle'>您已拒绝了复试邀请</text>
+          </view>
+          <view class='viewDiv'>
+            <text class='staticStyle'><text style='color:#2EA7E0'>拒绝理由：</text>{{status19.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status18 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell' >
+        <view class='conTitle'>{{status18.title}}</view>
+        <view class='conTime'>{{status18.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle' wx:if="{{status18.content !=null}}">{{status18.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status6 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status6.title}}</view>
+        <view class='conTime'>{{status6.time}}</view>
+        <view class='yesOrNo' wx:if="{{status6.content.status == 0}}">
+          <view class='yes' bindtap='jieshoufushi' data-id='{{status6.applyLogId}}' wx:if="{{!status24}}">接受</view>
+          <view class='no' bindtap='jujuefushi' data-id='{{status6.applyLogId}}' wx:if="{{!status24}}">拒绝</view>
+        </view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <view class='TimeTitle'>复试时间：</view>
+            <view class='TimeCon'>{{status6.content.interviewTime}}</view>
+          </view>
+          <view class='viewDiv address-maker'>
+            <!--<view class='fa fa-map-marker'></view>-->
+            <view class='AddressTitle'>复试地点：</view>
+            <view class='AddressCon'>{{status6.content.interviewLocation}}</view>
+          </view>
+          <view class='viewDiv'>
+            <text class='PeopleTitle'>联系人　：</text>
+            <view class='PeopleCon'>{{status6.content.interviewContact}}</view>
+          </view>
+          <view class='viewDiv'>
+            <view class='PhoneTitle'>联系电话：</view>
+            <view class='PhoneCon'>{{status6.content.interviewContactNumber}}</view>
+          </view>
+          <view class='viewDiv'>
+            <text class='RemarksTitle'>备　　注：</text>
+            <view class='RemarksCon' wx:if="{{status6.content.interviewRemarks !=null}}">{{status6.content.interviewRemarks}}</view>
+          </view>
+          <!--<view class='viewDiv' >
+            <view class='TipsTitle'>温馨提示：</view>
+            <view class='TipsCon'>您的简历过于简单，建议您在面试前先完善或上传您的简历，详细填写工作经历、教育经历和个人优势等内容</view>
+          </view>-->
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status23 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status23.title}}</view>
+        <view class='conTime'>{{status23.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle' wx:if="{{status23.content !=null}}">{{status23.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+     <view class='ProgressDetail' wx:if='{{status22 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status22.title}}</view>
+        <view class='conTime'>{{status22.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle' wx:if="{{status22.content !=null}}">{{status22.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status17 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status17.title}}</view>
+        <view class='conTime'>{{status17.time}}</view>
+      </view>
+    </view>
+    <!-- 屏蔽面试结束 -->
+    <view class='ProgressDetail' wx:if='{{status5 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status5.title}}</view>
+        <view class='conTime'>{{status5.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle' wx:if="{{status5.content !=null}}">{{status5.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status16 != null}}' >
+      <view class='Dot'><view></view></view>
+      <view class='contentShell' bindtap="saoma">
+        <view class='conTitle'>{{status16.title}}</view>
+        <view class='conTime'>{{status16.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle' wx:if="{{status16.content !=null}}">{{status16.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status4 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status4.title}}</view>
+        <view class='conTime'>{{status4.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle'>{{status4.content}}\n
+            温馨提示：面试过程中如果企业以任何方式索要钱财，请勿相信并及时举报！
+            </text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status12 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status12.title}}</view>
+        <view class='conTime'>{{status12.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle'>您已拒绝了面试邀请</text>
+          </view>
+          <view class='viewDiv'>
+            <text class='staticStyle'><text style='color:#2EA7E0'>拒绝理由：</text>{{status12.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status11 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status11.title}}</view>
+        <view class='conTime'>{{status11.time}}</view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status3 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status3.title}}</view>
+        <view class='conTime'>{{status3.time}}</view>
+        <view class='yesOrNo' wx:if="{{status3.content.status == 0}}">
+          <view class='yes' bindtap='jieshoumianshi' data-id='{{status3.applyLogId}}' wx:if="{{!status24}}">接受</view>
+          <view class='no' bindtap='jujuemianshi' data-id='{{status3.applyLogId}}' wx:if="{{!status24}}">拒绝</view>
+        </view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <view class='TimeTitle'>面试时间：</view>
+            <view class='TimeCon'>{{status3.content.interviewTime}}</view>
+          </view>
+          <view class='viewDiv address-maker'>
+            <!--<view class='fa fa-map-marker'></view>-->
+            <view class='AddressTitle'>面试地点：</view>
+            <view class='AddressCon'>{{status3.content.interviewLocation}}</view>
+          </view>
+          <view class='viewDiv'>
+            <text class='PeopleTitle'>联系人　：</text>
+            <view class='PeopleCon'>{{status3.content.interviewContact}}</view>
+          </view>
+          <view class='viewDiv'>
+            <view class='PhoneTitle'>联系电话：</view>
+            <view class='PhoneCon'>{{status3.content.interviewContactNumber}}</view>
+          </view>
+          <view class='viewDiv'>
+            <text class='RemarksTitle'>备　　注：</text>
+            <view class='RemarksCon' wx:if="{{status3.content.interviewRemarks !=null}}">{{status3.content.interviewRemarks}}</view>
+          </view>
+          <!--<view class='viewDiv' >
+            <view class='TipsTitle'>温馨提示：</view>
+            <view class='TipsCon'>您的简历过于简单，建议您在面试前先完善或上传您的简历，详细填写工作经历、教育经历和个人优势等内容</view>
+          </view>-->
+        </view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status2 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status2.title}}</view>
+        <view class='conTime'>{{status2.time}}</view>
+      </view>
+    </view>
+    <view class='ProgressDetail' wx:if='{{status1 != null}}'>
+      <view class='Dot'><view></view></view>
+      <view class='contentShell'>
+        <view class='conTitle'>{{status1.title}}</view>
+        <view class='conTime'>{{status1.time}}</view>
+        <view class='conDetail'>
+          <view class='viewDiv'>
+            <text class='staticStyle'>{{status1.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='model5 box'>
+      <view class='tipsTitle'><text class='fa fa-warning(alias)'></text>温馨提示</view>
+      <view class='tipsContent'>该HR承诺名下所有职位不向您收取任何费用，如有不实，请立即举报！<text>《防骗指南》</text></view>
+    </view>
+</view>
+<view class='twoBtn'>
+  <view class="bottom-btn" wx:if="{{jobType == 'scene'}}">
+    <view class="bottom-callbtn" bindtap='callPhone'><text class='fa fa-phone'></text>电话沟通</view>
+    <view class="bottom-nobtn" bindtap="cancel">取消申请</view>
+  </view>
+  <view class='onLine' bindtap='callPhone'><text class='fa fa-phone'></text>电话沟通</view>
+  <!--<view class='applyInterview' bindtap='applyInterview'>在线沟通</view>-->
+</view>
+
+<!-- 拒绝原因选择 -->
+
+<view class="posi">
+  <view class='address-mask animated fadeIn' wx:if="{{jujueshow}}">
+    <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" bindchange="jujue">
+      <view class='operation'>
+        <text class='cancel-btn' catchtap='openSex_cancle'>取消</text>
+        <text class='comfirm-btn' catchtap='openSex_sure'>确定</text>
+      </view>
+      <picker-view-column>
+        <view wx:for="{{jujueyy}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</view>
+<view class="posi">
+  <view class='address-mask animated fadeIn' wx:if="{{jujueshow2}}">
+    <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" bindchange="jujue">
+      <view class='operation'>
+        <text class='cancel-btn' catchtap='openSex_cancle'>取消</text>
+        <text class='comfirm-btn' catchtap='openSex_sure'>确定</text>
+      </view>
+      <picker-view-column>
+        <view wx:for="{{jujueyy}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</view>
+
+<!-- <picker-view indicator-style="height: 50px;" class="jujueyy" style="width: 100%; height: 300px;" mask-style="opacity: 0.5" value="{{value}}" bindchange="jujue" wx:if="{{jujueshow}}">
+  <picker-view-column>
+      <view wx:for="{{jujueyy}}" style="line-height: 50px" wx:key="{{index}}">{{item}}</view>
+    </picker-view-column>
+</picker-view> -->
+

@@ -1,0 +1,68 @@
+<!--pages/person/person.wxml-->
+<view class='Shell box'>
+  <view class="q-preview" bindtap="preview">预览</view>
+  <view class='model personHead' bindtap='jump' data-url='personData'>
+    <image class='personImg' src='{{(content.avatar == "null" || content.avatar == null || content.avatar == "") ? "../../images/peopleDefault.png":imgIp + content.avatar}}'></image>
+    <view class='nameShell' wx:if="{{islogin && requiedInfo}}">
+      <text class='fa fa-angle-right nameright'></text>
+      <view class='name'>{{content.name}}</view>
+      <view class='basicInfo'>{{content.workingYears}}年经验·{{content.recordOfFormalSchoolingName}}·{{content.age}}岁</view>
+    </view>
+    <view wx:if="{{!islogin || !requiedInfo}}" class="login">请先登录/注册</view>
+  </view>
+  <view class='model' bindtap='jump' data-url='wantedJob'>
+    <view class='Title'>
+      <image class='titleIcon' src='../../images/blueIcon.png'></image>
+      求职意向
+      <text class='fa fa-angle-right'></text>
+      <text class='intention'>{{content.jobHuntingIntention ==null?"":content.jobHuntingIntention}}</text>
+    </view>
+  </view>
+  <view class='model' bindtap='jump' data-url='personAdvantage'>
+    <view class='Title'><image class='titleIcon' src='../../images/blueIcon.png'></image>个人优势<text class='fa fa-angle-right'></text></view>
+    <text class='advantage'>{{content.personalAdvantage ==null?"":content.personalAdvantage}}</text>
+  </view>
+  <view class='model'>
+    <view class='Title'><image class='titleIcon' src='../../images/blueIcon.png'></image>工作经历<text class='add' bindtap='jump' data-url='workExp'>添加</text></view>
+    <view class='experienceShell'>
+      <view class='experience' wx:for="{{content.workExperienceList}}" wx:key="index" data-id='{{item.id}}' bindtap='changeWorkExp'>
+        <text class='experienceCom'>{{item.companyName}}</text>
+        <text class='fa fa-angle-right'></text>
+        <text class='experienceTime'>{{item.time}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='model'>
+    <view class='Title'><image class='titleIcon' src='../../images/blueIcon.png'></image>教育经历<text class='add' bindtap='jump' data-url='educationExp'>添加</text></view>
+    <view class='experienceShell'>
+      <view class='experience' wx:for="{{content.educationExperienceList}}" wx:key="index" data-id='{{item.id}}' bindtap='changeEducationExp'>
+        <view class='educationCom'>
+          <text class='educationCom_1'>{{item.schoolName}}</text>
+          <text class='educationCom_2'>{{item.major}}</text>
+        </view>
+        <text class='fa fa-angle-right'></text>
+        <text class='educationTime'>{{item.time}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='model' bindtap='jump' data-url='Diploma'>
+    <view class='Title Authentication'>
+      <image class='titleIcon' src='../../images/blueIcon.png'></image>
+      学历认证
+      <text class='fa fa-angle-right'></text>
+      <text class='intention'>{{authenticationStateText}}</text>
+    </view>
+  </view>
+  <view class='model' bindtap='jump' data-url='Employment'>
+    <view class='Title Authentication'>
+      <image class='titleIcon' src='../../images/blueIcon.png'></image>
+      用工状态
+      <text class='fa fa-angle-right'></text>
+    </view>
+  </view>
+</view>
+
+
+
+
+

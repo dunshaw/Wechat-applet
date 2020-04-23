@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "customnav": "/components/nav/nav",
+    "calendar": "/components/calendar/calendar",
+    "jobboard":"/components/jobboard/jobboard",
+    "weui-dialog":"/components/dialog/dialog",
+    "mytabbar":"../../custom-tab-bar/index"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle":"dark",
+  "navigationBarTitleText": ""
+}

@@ -1,0 +1,19 @@
+<view> 
+    <customnav backbar="" text="选择职位" />
+    <view style="height:{{46+statusBarHeight}}px;"></view>
+    <view class="searchbar">
+        <view style="padding-top:20rpx;">
+        <icon class="searchbar-icon" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input searchbar-input" value="{{searchValue}}" placeholder="请输入公司简称"  bindinput="inputSearch" />
+        </view>
+    </view>
+    <scroll-view scroll-y="true" class="joblist" style="height:{{scrollHeight}}px" bindscrolltolower="loadData">
+      <view wx:for="{{jobList}}" wx:key="index" class="job-item" bindtap="selected" data-item="{{item}}">
+        <text>{{item.jobName}}</text>
+        <view class="job-item-right">
+          <text class="companytext">{{item.alias}}</text>
+          <view class="chooseplace"><image src='/images/rightarr.png' class="rightimg"></image></view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>

@@ -1,0 +1,39 @@
+/* pages/submitSuccess/submitSuccess.wxss */
+.Shell{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 100rpx;
+  text-align: center;
+}
+.applySuccess{
+  width: 140rpx;
+  height: 140rpx;
+  margin: 120rpx auto 0 auto;
+  padding: 0;
+}
+.title{
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 40rpx;
+}
+.content{
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+  margin-top: 25rpx;
+}
+.seeProgress{
+  width: 100%;
+  overflow: hidden;
+  margin: 100rpx 0 0 0;
+  padding: 0;
+  background-color: #2EA7E0;
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 88rpx;
+  border-radius: 8rpx;
+  text-align: center;
+}

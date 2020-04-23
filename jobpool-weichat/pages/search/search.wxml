@@ -1,0 +1,22 @@
+<!--pages/search/search.wxml-->
+<view class='Shell'>
+  <input type="text" class="searchWord" placeholder="搜索职位/公司/福利" placeholder-class="placeholder" confirm-type="done" bindconfirm="goIndex" bindinput="searchVal"></input>
+  <text class='cancle' bindtap="jump">搜索</text>
+</view>
+<view class='history' wx:if='{{sHistory.length>0}}'>
+  <view class='historyTitle'>搜索历史<image class='deleteHistory' src='../../images/delete.png' bindtap='deleteHistory'></image></view>
+  <view class='historyIconShell'>
+    <view class='historyIcon' bindtap='clickThisIcon' data-value="{{item}}" wx:for="{{sHistory}}" wx:key="index" wx:if="{{index<5}}">{{item}}</view>
+  </view>
+</view>
+<!-- 暂时屏蔽热门搜索 -->
+<!-- <view class='hot'>
+  <view class='hotTitle'>热门搜索</view>
+  <view class='hotIconShell'>
+    <view class='hotIcon' wx:for='{{hotHistory}}' wx:key='{{index}}' bindtap='clickThisIcon' data-value="{{item}}">{{item}}</view>
+  </view>
+</view> -->
+<view class="q-nothing" wx:if="{{nothing}}">
+  <image src="../../images/nohave.png"></image>
+  <view>搜索无结果</view>
+</view>

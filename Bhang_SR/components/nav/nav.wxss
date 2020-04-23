@@ -1,0 +1,41 @@
+.nav-box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background:#fff;
+    width: 100%;
+    height: 90px;
+    z-index: 998;
+    outline: 1px solid #eee;
+}
+.nav-content{
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    height: 46px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: bold;
+    position: relative;
+}
+.leftimg{
+    margin: 0 20rpx;
+    width: 50rpx;
+    height: 50rpx;
+}
+.navtitle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.rebackimg{
+    width: 18rpx;
+    height: 30rpx;
+    position: absolute;
+    left: 20rpx;
+    top:10rpx;
+}
+.rebackbtn{
+    width:80rpx;height:60rpx;position: absolute;
+}

@@ -1,0 +1,73 @@
+<!--pages/workExp/workExp.wxml-->
+<view class='Shell'>
+  <view class='nameModel'>
+    <view class='important'>*</view>
+    <view class='nameTitle'>公司</view>
+    <view class='nameView'><input class='inputName' type='text' placeholder='请填写' placeholder-class="placeholder" value='{{company}}' bindinput='inputCompany'></input></view>
+  </view>
+  <view class='nameModel'>
+    <view class='important'>*</view>
+    <view class='nameTitle'>职位</view>
+    <view class='nameView'><input class='inputName' type='text' placeholder='请填写' placeholder-class="placeholder" value="{{position}}" bindinput='inputPosition'></input></view>
+  </view>
+  <view class='genderModel'>
+    <view class='important'>*</view>
+    <view class='genderTitle'>开始时间</view>
+    <view class='genderView {{starTime == "请选择"?"notChoice":""}}' bindtap='openStarTime'>{{starTime}}<text class='fa fa-angle-right'></text></view>
+  </view>
+  <view class='genderModel'>
+    <view class='important'>*</view>
+    <view class='genderTitle'>结束时间</view>
+    <view class='genderView {{endTime == "请选择"?"notChoice":""}}' bindtap='openEndTime'>{{endTime}}<text class='fa fa-angle-right'></text></view>
+  </view>
+</view>
+
+<view class='workDescribe'>
+  <view class='describeTitle'>工作内容描述（必填)</view>
+  <view class='textareaShell' wx:if="{{ !showTime || !showTimeEnd }}">
+    <view class='textView'>
+      <textarea class="textStyle {{(showTime || showTimeEnd) == true ? 'hide' : ''}}" value='{{textContent}}' placeholder="请简要描述您在岗职位的工作内容和职责范围等" placeholder-class="textTitle {{(showTime || showTimeEnd) == true ? 'hide' : ''}} " maxlength="150" bindinput="countNub" disabled="{{showTime || showTimeEnd}}"/>
+      <view class='textareaNub'>{{textareaNub}}/150字</view>
+    </view>
+  </view>
+  <view class='seeOther'>
+    <view class='seeOtherTitle'>看看别人怎么写<text class='changeOne' bindtap="changeNext">换一个</text></view>
+    <view class='otherConShell' bindtap="copyjl">
+      <text class='otherCon'>{{workTemplate}}</text>
+    </view>
+  </view>
+</view>
+
+<view class='submitForm' bindtap='submitForm'>提交</view>
+<view class="del" bindtap="del" wx:if="{{ id }}">删除</view>
+
+<!--开始时间选择-->
+<view class='address-mask animated fadeIn' wx:if="{{showTime}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureValue}}" bindchange="bindChange">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openStarTime_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openStarTime_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{year}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{month}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+<!--结束时间选择-->
+<view class='address-mask animated fadeIn' wx:if="{{showTimeEnd}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureEndValue}}" bindchange="bindChangeEnd">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openEndTime_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openEndTime_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{year}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{month}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>

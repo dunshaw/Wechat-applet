@@ -1,0 +1,8 @@
+<!--pages/submitSuccess/submitSuccess.wxml-->
+<view class='Shell'>
+  <image class='applySuccess' src='../../images/applySuccess.png'></image>
+  <view class='title'>职位申请成功！</view>
+  <view class='content'>在"求职进展"中可查看面试邀请及面试结果</view>
+  <view class='seeProgress' bindtap='goProgress'>查看进展详情</view>
+</view>
+

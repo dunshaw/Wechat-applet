@@ -1,0 +1,2 @@
+<!--pages/news/news.wxml-->
+<rich-text nodes="{{content}}" space="nbsp"></rich-text>

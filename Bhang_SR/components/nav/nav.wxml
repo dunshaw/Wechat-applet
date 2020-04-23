@@ -1,0 +1,14 @@
+<view class="nav-box" style="height:{{navHeight + statusBarHeight}}px">
+    <view class="nav-content" style="height:{{vavHeight}}px;top:{{statusBarHeight}}px;line-height:{{vavHeight}}px;">
+        <view wx:if="{{backbar}}" class="navtitle">
+            <image src='/images/leftlogo.png' class="leftimg"></image>
+            <text>{{text}}</text>
+        </view>
+        <view wx:else style="text-align: center;width:100%;">   
+            <view class="rebackbtn" bindtap="headerBack">
+                <image src='/images/reback.png' class="rebackimg"></image>
+            </view>
+            <text>{{text}}</text>
+        </view>
+    </view>
+</view>

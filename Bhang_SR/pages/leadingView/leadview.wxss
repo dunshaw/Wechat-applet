@@ -1,0 +1,159 @@
+/* pages/leadingView/leadview.wxss */
+/* @import '../../static/weui.wxss'; */
+.title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 130rpx;
+  font-size: 34rpx;
+  width: 100%;
+  justify-content: space-around;
+
+}
+.title-text{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  align-items: center;
+}
+.title .jobname{
+  width: 90%;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow: hidden;
+  text-align: left;
+  font-weight: bold;
+}
+.importresultimg{
+  width: 38rpx;
+  height: 46rpx;
+  margin-right: 10rpx;
+}
+.erweimaimg{
+    width: 70rpx;
+    height: 70rpx;
+    margin:30rpx;
+}
+.datetimetext{
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+}
+.datetime{
+  width: 100%;
+  color: #999;
+  font-size: 0.8rem;
+  white-space:nowrap;
+  font-weight: normal !important;
+  text-align: left;
+}
+.bottom{
+    width: 90%;
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+}
+.submitbtn{
+    background:#2EA7E0 ;
+    color: #fff;
+}
+.submitbtn:active{
+    background:#69c0e9 ;
+}
+.chooseTime{
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  right: 0;
+  top: 40%;
+  z-index: 50;
+}
+.rightimg{
+  width: 20rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 8rpx;
+}
+.weui-demo-dialog{
+  visibility:hidden;
+  opacity:0;
+  transition:all .3s;
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+}
+.weui-half-screen-dialog{
+  transition:all .3s;
+  transform:translateY(100%);
+  padding: 0;
+  padding-bottom: 40rpx;
+}
+.weui-half-screen-dialog__hd{
+  padding: 0 calc(24px + env(safe-area-inset-right)) env(safe-area-inset-bottom) calc(24px + env(safe-area-inset-left));
+
+}
+.weui-demo-dialog_show{
+  visibility:visible;
+  opacity:1;
+}
+.weui-demo-dialog_show .weui-half-screen-dialog{
+    transform:translateY(0);
+}
+.interviewList-item{
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkedlabel{
+  background: #2EA7E0;
+  color: #fff;
+}
+.weui-cell-item{
+  border-top: 1rpx solid #E5E5E5
+}
+
+.weui-gallery{
+  height: 100%vh;
+  background: rgba(0, 0, 0, .6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.erweimabox{
+  width: 100%;
+  position: relative;
+}
+.erweimatitle{
+  position: absolute;
+  top:350rpx;
+  z-index: 1000;
+  color: #444;
+  /* height: 50rpx; */
+  font-size: 28rpx;
+  width: 100%;
+  text-align: center;
+
+}
+.erweimatitle span{
+  color: #2EA7E0;
+}
+.erweimacode{
+  width: 400rpx;
+  height: 400rpx;
+  /* border: 20rpx solid #fff; */
+  border-radius: 8rpx;
+  position: absolute;
+  top: 425rpx;
+  left:100rpx;
+}
+.qrcodebg{
+  width: 600rpx;
+  height: 900rpx;
+  position: relative;
+  top: 250rpx;
+}

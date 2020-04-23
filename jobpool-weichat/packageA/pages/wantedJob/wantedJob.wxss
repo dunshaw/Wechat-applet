@@ -1,0 +1,181 @@
+/* pages/wantedJob/wantedJob.wxss */
+page{
+  background-color: #f5f5f5;
+}
+.Shell{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.nameModel{
+  width: 100%;
+  height: 112rpx;
+  overflow: hidden;
+  margin: 20rpx 0 0 0;
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.genderModel{
+  width: 100%;
+  height: 112rpx;
+  overflow: hidden;
+  margin: 0;
+  padding: 40rpx 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ddd;
+}
+.genderModel:last-child{
+  border: none;
+}
+.important{
+  width: 20rpx;
+  height: 32rpx;
+  font-size: 32rpx;
+  color: #FF4C4C;
+  line-height: 32rpx;
+  margin: 6rpx 5rpx 0 0;
+  padding: 0;
+  text-align: left;
+  float: left;
+}
+.nameTitle{
+  width: 200rpx;
+  height: 32rpx;
+  margin: 0 20rpx 0 0;
+  padding: 0;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #333;
+  text-align: left;
+  float: left;
+}
+.genderTitle{
+  width: 200rpx;
+  height: 32rpx;
+  margin: 0 20rpx 0 0;
+  padding: 0;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #333;
+  text-align: left;
+  float: left;
+}
+.genderView,.nameView{
+  width: 445rpx;
+  height: 32rpx;
+  overflow: hidden;
+  font-size: 32rpx;
+  color: #666;
+  line-height: 32rpx;
+  margin: 0;
+  padding: 0 20rpx 0 0;
+  text-align: right;
+  float: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+.notChoice{
+  color: #999;
+}
+.genderView>.fa,.nameView>.fa{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-left: 15rpx;
+  color: #999;
+  font-size: 32rpx;
+  line-height: 32rpx;
+}
+.inputName{
+  width: 100%;
+  height: 54rpx;
+  font-size: 32rpx;
+  color: #666;
+  line-height: 54rpx;
+  margin: 0;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.placeholder{
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #999;
+}
+
+
+
+/*选择地址*/
+.address-mask{
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 98;
+  position: fixed;
+}
+.picker-view{
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  bottom: 0;
+  z-index: 99;
+  background: #fff;
+}
+.operation{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  position: absolute;
+  z-index: 99;
+  box-sizing: border-box;
+  background: #fff;
+}
+.operation .cancel-btn{
+  color: #999;
+}
+.operation .comfirm-btn{
+  color: goldenrod;
+  float: right;
+}
+.item-column{
+  line-height: 50px;
+  font-size: 26rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.q-wantedbottom{
+  width: 100%;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 32rpx;
+  line-height: 88rpx;
+  text-align: center;
+  z-index: 50;
+}
+.keepSelected{
+  width: 50%;
+  height: 88rpx;
+  color: #FFFFFF;
+  flex-grow:1;
+  background-color: #2EA7E0;
+}
+.q-skip{
+  width: 50%;
+  height: 88rpx;
+  flex-grow:1;
+  color: #999;
+}

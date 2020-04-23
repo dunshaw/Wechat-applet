@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "customnav": "/components/nav/nav",
+    "van-steps": "/miniprogram_npm/vant-weapp/steps/index"
+  }
+}

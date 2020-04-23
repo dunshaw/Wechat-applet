@@ -1,0 +1,47 @@
+<wxs src="../wxs/utils.wxs" module="utils" />
+
+<view class="custom-class {{ utils.bem('steps', [direction]) }}">
+  <view class="van-step__wrapper">
+    <view
+      wx:for="{{ steps }}"
+      wx:key="index"
+      class="{{ utils.bem('step', [direction, status(index, active)]) }} van-hairline diy-stepitem"
+    >
+      <van-loading class="diy-stepitem-loading" type="spinner" size="50rpx" color="#1989fa" wx:if="{{item.replaying}}" />
+      <view wx:else class="van-step__title diy-step-title" style="{{ !item.result ? 'color: ' + activeColor : '' }}">
+        <view class="{{!item.result?'diy-stepitem-text__false':''}}">
+        {{ item.stepView }}
+        <span wx:if="{{!item.result}}" class="diy-stepitem-desc"><van-icon class="diy-stepitem-icon" size="24rpx" name="warning" color="#F7B500" />{{item.errorMsg}}</span>
+        </view>
+        <view class="diy-stepitem-time">
+          {{ item.createTime }}
+        </view>
+        <view wx:if="{{item.status==1}}" data-index="{{index}}" class="diy-stepitem-result">成功</view>
+        <view wx:elif="{{item.status==-2}}" data-index="{{index}}" class="diy-stepitem-result">跳过</view>
+        <view wx:elif="{{item.status==-3}}" data-index="{{index}}" bindtap="replaystep" class="diy-stepitem-result">重新执行</view>
+        <view wx:else data-index="{{index}}" style="color:#000;" class="diy-stepitem-result ">未执行</view>
+      </view>
+      <view class="van-step__circle-container">
+        <block wx:if="{{ !item.result }}">
+          <van-icon wx:if="{{ inactiveIcon }}" name=" ../../../images/replay.png " custom-class="van-step__active" color="#969799" size="12px" />
+        </block>
+        <van-icon wx:else name="{{ activeIcon }}" color="{{ activeColor }}" custom-class="van-step__active" />
+      </view>
+      <view class="van-step__line" style="background-color:#E6E6E6;" />
+    </view>
+  </view>
+</view>
+
+<wxs module="status">
+function get(index, active) {
+  if (index < active) {
+    return 'finish';
+  } else if (index === active) {
+    return 'process';
+  }
+
+  return '';
+}
+
+module.exports = get;
+</wxs>

@@ -1,0 +1,127 @@
+<!--pages/companyInfo/companyInfo.wxml-->
+<view class='comBanner'>
+  <swiper class='swiperShell' indicator-dots="{{false}}" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}">
+    <block wx:for="{{photoList}}" wx:key="index">
+      <swiper-item >
+        <image src="{{imgIp + item}}" class="slide-image"/>
+        <view class='current'>{{index + 1}} / {{photoList.length}}</view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class='comName'>
+  <view class='comHeadImg'><image src='{{ imgIp + logo}}'></image></view>  
+  <view class='comNameShell'>
+    <view class='nameShell'>
+      <view class='name'>{{alias}}</view><view class='proving'>资质认证</view>
+    </view>
+    <view class='fullName'>全称：{{name}}</view>
+    <view class='scale'>{{area}} | {{scale}} | {{industry}}</view>
+  </view>
+</view>
+
+
+<view class='modelShell isFixed'>
+  <view class='TwoTitle'>
+    <view class='titleCon {{active ==1?"activeTitleCon":"" }}' bindtap='click' data-value='1'>招聘岗位</view>
+    <view class='titleCon {{active ==2?"activeTitleCon":"" }}' bindtap='click' data-value='2'>公司介绍</view>
+  </view>
+</view>
+
+<view class='isShowThis' wx:if="{{active == 2?true:false}}">
+  <view class='showModel'>
+    <view class="comIntro {{ seedown ? '': 'sdown' }}"><text>{{introduction}}</text></view>
+    <!-- <view class='fa fa-angle-down seeMore' bindtap="seedown"></view> -->
+    <view class="seedown {{ seedown ? 'nosdown': '' }}" bindtap="seedown"></view>
+    <view class="q-line"></view>
+    <view class='addressLocation' bindtap="seeadd"><text class='fa fa-map-marker'></text>{{location}}</view>
+  </view>
+
+
+  <view class='typeAndTime'>
+    <view><text>成立时间：</text>{{establishTime ? establishTime : '未知'}}</view>
+    <view><text>营业状态：</text>{{businessStatus ? businessStatus : '未知'}}</view>
+    <view><text>企业类型：</text>{{(enterpriseType == '' || enterpriseType == null) ? '未知' : enterpriseType}}</view>
+    <view class='eyesCheck'>信息来源：<image class='eyes' src='../../images/eyes.png'></image></view>
+  </view>
+  <view class='eyesCheckMore' bindtap="seecomp">查看更多企业信息<text class='fa fa-angle-right'></text></view>
+</view>
+
+<view class='isShowThis' wx:else>
+  <view class='comOtherJob' wx:if="{{recruitPosition.length!=0}}">
+    <view class='content' wx:for="{{recruitPosition}}" wx:key="index" data-id="{{item.jobId}}" data-time="{{item.interviewTimeDate}}" bindtap="seejob">
+      <view class='jobInfoShell'>
+        <image wx:if="{{item.jobShared}}" src="../../images/gongxiang.png" class="tuijianclass"></image>
+        <image class='companyIcon' src='{{imgIp + item.companyLogo}}'></image>
+        <view class='jobInfoLeft'>
+          <view class="q-comp-workname">
+            <view class='jobName'>{{item.jobName}}</view>
+            <image wx:if="{{item.general}}" src="../../images/pugong.png" class="companypg"></image>
+            <image wx:if="{{item.popular}}" src="../../images/hot.png" class="companyhot"></image>
+            <image wx:if="{{item.isRichText}}" src="../../images/fuwenben.png" class="companypg"></image>
+          </view>
+          <view class='jobInfo'>{{item.areaName}} | {{item.workingYears}} | {{item.education}} | 距离<text>{{item.distance}}</text>公里</view>         
+        </view>
+        <view class='jobInfoRight'>
+          <view class='jobSalary'>{{item.salaryMin}}k-{{item.salaryMax}}k</view>
+          <view class='typeShell'>
+            <text class='types type1' wx:if='{{item.type == "online"?true:false}}'>在线直聘</text>
+            <text class='types type2' wx:if='{{item.type == "scene"?true:false}}'>现场直面会</text>
+          </view>
+        </view>       
+      </view>
+      <view>
+        <view class="wm_reward" wx:if='{{item.recommendReward || item.recommendedAwardNew}}'>
+            <view class='w_reward' wx:if='{{item.femaleReward && item.recommendReward}}'>女奖{{item.femaleReward}}</view>
+            <view class='m_reward' wx:if='{{item.maleReward && item.recommendReward}}'>男奖{{item.maleReward}}</view>
+            <view class='r_reward' wx:if='{{item.recommendedAwardNew && item.recommendAmount}}'>推荐{{item.recommendAmount}}</view>
+          </view>
+          <view class='jobLable'>
+            <view  wx:for="{{item.labels}}" wx:key="index">{{item}}</view>
+          </view>
+      </view>
+      <view class='jobFooter'>
+        <view class='jobFootTime'>面试时间：<text>{{ item.interviewTime ? item.interviewTime : '等待通知' }}</text></view>
+        <view class='jobFootPeople'>已申请<text> {{item.applyNumber}} </text>人</view>
+      </view>
+    </view>
+    
+    <!-- <view class='content' wx:for='{{recruitPosition}}' wx:key='{{index}}' bindtap='jump' data-id='{{item.jobId}}'>
+      <view class='information'>
+        <view class='leftCon'>
+          <view class='imgAndTitle'>
+            <image class='companyIcon' src='{{imgIp + item.companyLogo}}'></image>
+            <view class="compan-box">
+              <text class='Title'>{{item.jobName}}</text>
+              <image wx:if="{{item.general}}" src="../../images/pugong.png" class="companypg"></image>
+            </view>
+            <text class='companyName'>{{item.companyName}}</text>
+          </view>
+          <view class='require'>{{item.areaName}} | {{item.gongzuonianxian}} | {{item.xueliyaoqiu}} | 距离 <text style='color:#2EA7E0'>{{item.distance}}</text> 公里</view>
+        </view>
+        <view class='rightCon'>
+          <view class='salary'>{{item.salaryMin/1000}}k-{{item.salaryMax/1000}}k</view>
+          <view class='typeShell'>
+            <text class='types type1' wx:if='{{item.type == "online"?true:false}}'>在线直聘</text>
+            <text class='types type2' wx:if='{{item.type == "scene"?true:false}}'>现场直面会</text>
+          </view>
+          <view class='m_reward' wx:if='{{item.maleReward !=null?true:false}}'>男奖{{item.maleReward}}</view>
+          <view class='w_reward' wx:if='{{item.femaleReward !=null?true:false}}'>女奖{{item.femaleReward}}</view>
+        </view>
+      </view>
+      <view class='welfareShell'>
+        <text class='welfare' wx:for='{{item.labels}}' wx:key='{{index}}'>{{item}}</text>
+      </view>
+      <view class='timeAndNumber'>
+        <view class='time'>面试时间：<text>{{item.interviewTime ==null?'等待通知':item.interviewTime}}</text></view>
+        <view class='number'>已申请<text> {{item.applyNumber}} </text>人</view> 
+      </view>
+      <view class="q-partitionline"></view>
+    </view> -->
+
+  </view>
+  <view wx:else class="nohavebox">
+    <image src="../../images/nohave.png" class="nohaveimg"></image>
+    <text>什么都没有啊~</text>
+  </view>
+</view>

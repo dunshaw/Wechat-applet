@@ -1,0 +1,192 @@
+<!--pages/personData/personData.wxml-->
+<view class="Shell fjAuthModel" wx:if="{{fjAuthStatus}}">
+    <image class="renzhengbeijing" src="../../images/fjauthbg.png" role="img"></image>
+    <image class="yirenzheng" src="../../images/yirenzheng.png" role="img"></image>
+    <view class="renzhengxinxi">
+      <view class="leftrenzheng">
+        <text class="fjusername">{{userName}}</text>
+        <text class="fjusersex">{{sex}}</text>
+      </view>
+      <view>
+        <text class="fjuseryear">出生于{{useryear}}年</text>
+        <text class="fjusercard">{{renzhengFjCardId}}</text>
+      </view>
+    </view>
+    <view class="renzhengbaozhangview"><image class="renzhengbaozhang" src="../../images/renzhengbaozhang.png" role="img" />个人隐私信息安全保障中</view>
+    <p class="shimingtishi">实名认证后姓名性别年龄身份证不可修改，如资料有误请联系专属客服</p>
+  </view>
+<view class='Shell secondShell'>
+  <view class='headPicModel'>
+    <view class='headTitle'>头像</view>
+    <view class='headImgView' bindtap='chooseImage'><image class='headImg' src='{{(picUrl == null || picUrl == "null" || picUrl == "") ?"../../images/peopleDefault.png":imgIp+picUrl}}'></image></view>
+  </view>
+  <view class='nameModel' hidden="{{fjAuthStatus}}">
+    <view class='nameTitle'>
+      <image class="xinghaored" src="../../images/xinghaored.png" role="img"></image>姓名</view>
+    <view class='nameView'><input class='inputName' type='text' value='{{userName}}' placeholder='必填' placeholder-class="placeholder" adjust-position="{{false}}" bindinput='inputUserName'></input></view>
+  </view>
+  <view class='genderModel' hidden="{{fjAuthStatus}}">
+    <view class='genderTitle'>
+    <image class="xinghaored" src="../../images/xinghaored.png" role="img"></image>性别</view>
+    <view class='genderView {{sex == "请选择"?"notChoice":""}}' bindtap='{{fjAuthStatus?" ":"openSex"}}'>{{sex ? sex : '请选择'}}<text class='fa fa-angle-right'></text></view>
+  </view>
+  <view class='genderModel' wx:if="{{sourceIn==2 || userFjCardFlag}}" hidden="{{fjAuthStatus}}">
+    <view class='genderTitle'><image class="xinghaored" src="../../images/xinghaored.png" role="img"></image>身份证</view>
+    <view class="mailboxView">
+      <input class="inputName" placeholder="请填写您的身份证" placeholder-class="placeholder" bindinput="inputFjCardId" value="{{userFjCardId}}"></input>
+    </view>
+  </view>
+  <view class='genderModel'  wx:else hidden="{{fjAuthStatus}}">
+    <view class='genderTitle'><image class="xinghaored" src="../../images/xinghaored.png" role="img"></image>出生日期</view>
+    <view class='genderView {{date == "请选择"?"notChoice":""}}' bindtap='{{fjAuthStatus?" ":"openDate"}}'>{{date ? date : '请选择'}}<text class='fa fa-angle-right'></text></view>
+  </view>
+</view>
+
+<view class='Shell secondShell'>
+  <view class='genderModel'>
+    <view class='genderTitle'><image class="xinghaored" src="../../images/xinghaored.png" role="img"></image>学历</view>
+    <view class='genderView {{diploma == "请选择"?"notChoice":""}}' bindtap='openEC'>{{diploma ? diploma : '请选择'}}<text class='fa fa-angle-right'></text></view>
+  </view>
+
+  <view class='genderModel'>
+    <view class='genderTitle'>毕业时间</view>
+    <view class='genderView {{graduation == "请选择"?"notChoice":""}}' bindtap='openGra'>{{graduation ? graduation : '请选择'}}<text class='fa fa-angle-right'></text></view>
+  </view>
+  <view class='genderModel'>
+    <view class='genderTitle'>毕业院校</view>
+    <view class="mailboxView">
+      <input class="inputName" placeholder="请填写您的毕业院校" placeholder-class="placeholder" bindinput="school" value="{{school}}"></input>
+    </view>
+  </view>
+</view>
+<view class="Shell secondShell">
+  <view class='genderModel'>
+    <view class='genderTitle'>参加工作时间</view>
+    <view class='genderView {{joinWork == "请选择"?"notChoice":""}}' bindtap='openJoinWork'>{{joinWork ? joinWork : '请选择'}}<text class='fa fa-angle-right'></text></view>
+  </view>
+  <view class='genderModel'>
+    <view class='genderTitle'>工作单位</view>
+    <view class="mailboxView">
+      <input class="inputName" placeholder="请填写您的原、现单位" placeholder-class="placeholder" bindinput="workCompany" value="{{workCompany}}"></input>
+    </view>
+  </view>
+  <view class='genderModel'>
+    <view class='genderTitle'>现居住地</view>
+    <view class='genderView {{address == "请选择您的居住地"?"notChoice":""}}' bindtap='openCity'>{{address ? address : '请选择'}}<text class='fa fa-angle-right'></text></view>
+  </view>
+  <view class='genderModel'>
+    <view class='genderTitle'>家乡</view>
+    <view class='genderView {{homeTown == "请选择您的家乡"?"notChoice":""}}' bindtap='openHomeTown'>{{homeTown ? homeTown : '请选择'}}<text class='fa fa-angle-right'></text></view>
+  </view>
+  <view class='mailboxModel'>
+    <view class='mailboxTitle'>邮箱</view>
+    <view class='mailboxView'><input class='inputName' type='text' value="{{userEmail ? userEmail : ''}}" placeholder='请填写' placeholder-class="placeholder" adjust-position="{{false}}" bindinput='inputEmail'></input></view>
+  </view>
+  <view class='mailboxModel'>
+  </view>
+</view>
+
+<view class='submitForm' bindtap='submitForm'>提交</view>
+
+<!--性別选择-->
+<view class='address-mask animated fadeIn' wx:if="{{showSex}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureSexValue}}" bindchange="bindChangeSex">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openSex_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openSex_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{sexArray}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+<!--日期选择-->
+<view class='address-mask animated fadeIn' wx:if="{{showdate}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureDateValue}}" bindchange="bindChangeDate">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openDate_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openDate_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{yearArray}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{monthArray}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{dayArray}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+<!--学历选择-->
+<view class='address-mask animated fadeIn' wx:if="{{showEC}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureECValue}}" bindchange="bindChangeEC">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openEC_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openEC_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{diplomaArray}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+<!--毕业时间选择-->
+<view class='address-mask animated fadeIn' wx:if="{{showGraduation}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureGraduationValue}}" bindchange="bindChangeGra">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openGra_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openGra_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{yearArray}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{monthArray}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+<!--参加工作时间选择-->
+<view class='address-mask animated fadeIn' wx:if="{{showJoin}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureJoinValue}}" bindchange="bindChangeJoin">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openJoin_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openJoin_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{yearArray}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{monthArray}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+<!--现居住地选择-->
+<view class='address-mask animated fadeIn' wx:if="{{condition}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureValue}}" bindchange="bindChangeCity">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openCity_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openCity_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{provinces}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{citys}}" wx:key="{{index}}" class='item-column'>{{item.name}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+<!--家乡选择-->
+<view class='address-mask animated fadeIn' wx:if="{{showHomeTown}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureValue}}" bindchange="bindChangeHome">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openHome_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openHome_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{provinces}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{citys}}" wx:key="{{index}}" class='item-column' data-id='item.code'>{{item.name}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>

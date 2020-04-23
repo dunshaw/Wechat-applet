@@ -1,0 +1,19 @@
+<!--pages/mine/mine.wxml-->
+<view style="width:100%;"> 
+  <customnav backbar="true" text="我的" />
+  <view style="height:{{46+statusBarHeight}}px;"></view>
+  <view class="content">
+    <h3>我的分享码</h3>
+    <image class="erweima" wx:if="{{userQRcode==''}}" src="/images/erweima.png" />
+    <image class="erweima {{pulseFlag?'animated zoomIn':'' }}" wx:else src="data:image/png;base64,{{userQRcode}}"></image>
+    <!-- <button class="weui-btn" open-type="share">分享到微信</button> -->
+  　<button class="weui-btn" bindtap="openshare">分享到微信</button>
+  </view>
+  <view class="shareCanvasBg" wx:if="{{shareFlag}}" bindtap="closeshare">
+    <canvas canvas-id="shareCanvas" class="shareCanvas" ></canvas>
+    <view class="shareCanvastext" wx:if="{{saveFlag}}">
+      图片已保存到本地相册，去分享给小伙伴吧
+    </view>
+  </view>
+  
+</view>

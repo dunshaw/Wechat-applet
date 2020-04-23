@@ -1,0 +1,8 @@
+<!--pages/sao/sao.wxml-->
+<view class="icon">
+  <image src="../../images/applySuccess.png" wx:if="{{state == '扫码成功'}}"></image>
+  <image src="../../images/shibai.png" wx:else></image>
+</view>
+<view class="state">{{state}}</view>
+<view class="success">{{describe}}</view>
+<view class="btn" bindtap="ok">我知道了</view>

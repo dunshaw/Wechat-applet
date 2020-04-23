@@ -1,0 +1,40 @@
+<!--pages/entryMsg/entryMsg.wxml-->
+<view style="width:100%;"> 
+  <customnav backbar="" text="{{navtitle}}" />
+  <view style="height:{{46+statusBarHeight}}px;"></view>
+  <view wx:if="{{msgtype=='enterReject'}}">
+      <form bindsubmit="formRefuse" bindreset="formReset">
+          <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell">
+                  <view class="weui-cell__bd">
+                      <textarea name="reasonForRejection" class="weui-textarea" placeholder="请输入拒绝原因(必填)" maxlength='100' bindinput='userdescInput' style="height: 400rpx;" />
+                      <view class="weui-textarea-counter">{{desclength}}/100</view>
+                  </view>
+              </view>
+          </view>
+          <view class="bottom">
+              <button class="weui-btn submitbtn" type="" formType="submit">确 定</button>
+          </view>
+      </form>
+  </view>
+  <view wx:else>
+    <view class="weui-cells weui-cells_after-title weui-cell-selfs">
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+              <view class="weui-label">入职时间:</view>
+          </view>
+          <view class="weui-cell__bd datetimepick">
+            <picker mode="date" value="{{date}}" start="{{mindate}}" end="{{maxdate}}" bindchange="bindDateChange">
+                <view class="weui-input">{{date}}</view>
+            </picker> 
+            <picker mode="time" value="{{time}}" bindchange="bindTimeChange">
+                <view class="weui-input">{{time}}</view>
+            </picker>
+          </view>
+      </view>
+    </view> 
+    <view class="bottom">
+        <button class="weui-btn submitbtn" bindtap="entryresolve">确 定</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+<view class="page-body">
+  <view class="page-section page-section-gap">
+    <web-view src="{{shareurl}}"></web-view>
+  </view>
+</view>
+

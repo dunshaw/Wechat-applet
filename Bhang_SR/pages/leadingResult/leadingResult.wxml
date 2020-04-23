@@ -1,0 +1,59 @@
+<!--pages/leadingResult/leadingResult.wxml-->
+<view style="width:100%;"> 
+  <customnav backbar="" text="{{navtitle}}" />
+  <view style="height:{{46+statusBarHeight}}px;"></view>
+  <view class="title">
+      <image src='/images/erweima.png' class="erweimaimg" bindtap="openGallery"></image>
+      <view class="title-text">
+        <view class="title-text-left">
+          <text class="jobname">{{jobName}}</text>
+          <text class="datetime">{{interviewTime}}</text>
+        </view>
+        <image src='/images/importadd.png' class="importimg" bindtap="importadd"></image>
+      </view>
+  </view>
+  <view class="searchbar">
+    <view>
+      <icon class="searchbar-icon" type="search" size="14"></icon>
+      <input type="number" class="weui-search-bar__input searchbar-input" placeholder="请输入手机号搜索"  bindinput="inputTyping" />
+    </view>
+  </view>
+  <scroll-view class='resultslide' scroll-y="true" bindscrolltolower="getImportData" style="height:{{scrollHeight}}px;padding-bottom:10rpx;">
+    <view style="padding:10rpx;">
+      <view class="weui-cells weui-cells_after-title" bindtap="openDetail" data-userid="{{item.userId}}" data-interid="{{item.interviewImportId}}" wx:for="{{resultList}}" wx:key="index" hidden="{{!item.ishow}}">
+          <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__bd">
+                {{item.phone}}
+                <span style="color:#999;margin-left:5rpx;">{{item.name}}</span>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access {{item.result? 'item-yes':'item-no'}}">{{item.stepView}}</view>
+          </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="weui-demo-dialog {{showdetail ? 'weui-demo-dialog_show' : ''}}">
+    <view class="weui-mask" bindtap="closeDialog"></view>
+    <view class="weui-dialog__wrp" bindtap="closeDialog">
+        <view class="weui-dialog" catchtap="stopEvent">
+          <view class="weui-dialog__hd" style="padding-top:20px;">
+            <view class="weui-dialog__title">结果详情</view>
+          </view>
+          <view class="weui-dialog__bd">
+            <van-steps direction="vertical" steps="{{ steps }}" active-color="#3A88FD" active-icon="checked" active="{{ active }}" jobid="{{ jobId }}" inactive-icon="replay" bind:Eventupdata="Eventupdata" />
+          </view>
+        </view>
+        <image src='/images/closeDialogicon.png' class="closeDialogicon" bindtap="closeDialog"></image>
+    </view>
+  </view>
+    <!-- 二维码显示 -->
+  <view class="weui-gallery {{opengallery ? 'weui-gallery_show' : ''}}" bindtap="closeGallery">
+        <view class="weui-gallery__img__wrp">
+            <view class="erweimabox">
+              <image src="../../images/qrcodebg2.png" class="qrcodebg">
+                  <p class="erweimatitle"><span>{{jobName}}</span>签到码</p>
+                  <image class="weui-gallery__img erweimacode" src="data:image/png;base64,{{JobQRcode}}"></image>
+              </image>
+            </view>
+        </view>
+  </view>
+</view>

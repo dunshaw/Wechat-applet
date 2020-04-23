@@ -1,0 +1,40 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
+          <view class="weui-mask" bindtap="closeDialog"></view>
+          <view class="weui-dialog__wrp" bindtap="closeDialog">
+            <view catchtap="stopEvent" class="weui-dialog">
+              <view class='membercheckbox'>
+                <view class="checkbox-header">
+                    <text>已选择{{checkedresult.length}}项</text>
+                </view>
+                <van-radio-group value="{{ ischeckedalltype }}" bind:change="onChange" class="checkedalltype">
+                    <van-radio name="1" shape="square" checked-color="#2EA7E0">全部选择</van-radio>
+                    <van-radio name="2" shape="square" checked-color="#2EA7E0">本页选择</van-radio>
+                </van-radio-group>
+              </view>
+              <scroll-view class='slide' style="max-height:400px;" scroll-y="true" bindscrolltolower="getlower">
+                <view style="padding:10rpx;">
+                    <van-checkbox-group value="{{ checkedresult }}" bind:change="oncheckChange" >
+                        <view wx:for="{{ showmembers }}" wx:key="index" data-index="{{ index }}" bind:click="toggle">
+                            <view class='membertext'>
+                                <view class='{{item.sex =="male"? "title" :"female"}} view'>{{item.name}}</view>
+                                <view class='title view'>{{item.age}}</view>
+                                <view class='telephone view' bindtap="openActionSheet" data-phonecall='{{item.phone}}'>{{item.phone}}</view>
+                                <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item.applyId }}" shape="square" checked-color="#2EA7E0" />
+                            </view>
+                        </view>
+                    </van-checkbox-group>
+                </view>    
+              </scroll-view>
+              <view class="checkbox-bottom">
+                  <van-button type="primary" data-info="sendOffer" bindtap="SendMsg">发offer</van-button>
+                  <van-button type="warning" data-info="invitationToRetest" bindtap="SendMsg">邀请复试</van-button>
+                  <van-button type="danger" data-info="notSuitable" bindtap="SendMsg">不合适</van-button>
+              </view>
+            </view>
+            <van-icon name="close" size="40" color="#fff" class="closeDialogicon" bindtap="closeDialog" /> 
+          </view>
+        </view>
+    </view>
+</view>

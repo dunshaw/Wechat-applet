@@ -1,0 +1,81 @@
+<!--components/jobboard/jobboard.wxml-->
+<view>
+    <view class="jobboard">
+        <view class="toploft">
+            <view class="toploft-left">
+                <image src='/images/erweima.png' class="erweimaimg" bindtap="openGallery" data-name="{{job.jobName}}" data-id="{{job.jobId}}" data-time="{{job.interviewTimeJob?job.interviewTimeJob:''}}"></image>
+                <view class="toploft-left-text">
+                  <text>{{job.jobName}}</text>
+                  <text class="datetime">{{job.interviewTimeJob?job.interviewTimeJob:'等待通知'}}</text>
+                </view>
+            </view>
+            <view bindtap="openMoreSheet" class="moreview" data-id="{{job.jobId}}" data-name="{{job.jobName}}" data-time="{{job.interviewTimeJob?job.interviewTimeJob:''}}">
+              <image src='/images/more.png' class="morebtn"></image>
+            </view>
+        </view>
+        <view class="downloft">
+            <view class="{{selected ==job.jobId&&isstatus==item.status&&showhide!=0 ? 'item default-btnclicks':'item'}}" wx:for="{{taplist}}" wx:key="index" bindtap="{{item.numberNum !=0 ? 'getdetail' : ''}}" 
+                  data-info="{{item.status}}" data-id="{{job.jobId}}" data-type="{{item.type}}">
+                <view>{{item.text}}</view>
+                <view class="text">{{item.numberNum}}人</view>
+                <view class="rightline"></view>
+                <i class="{{selected ==job.jobId&&isstatus==item.status&&showhide!=0 ? 'selecttip':''}}"></i>
+            </view>
+        </view>
+    </view>
+    <view hidden="{{showflag}}" class="jobboard-splitbox"></view>
+    <view>
+        <view hidden="{{!showflag}}">
+            <view class='membertext'>
+                <text>姓名</text><text>年龄</text><text>电话</text><text>状态</text> 
+            </view>    
+        </view>
+        <scroll-view class='slide' style="max-height:{{showhide}}px;" scroll-top='{{topNum}}' scroll-y="true" scroll-y="{{isScroll}}" bindtouchstart="handleTouchStart" 
+                    bindtouchend="handleTouchEnd" bindlongpress="handleLongPress" bindscrolltolower="getlower">
+            <view>
+                <slide-view width="750" height="80" slide-width="500" wx:for="{{showmembers}}" wx:key="index">
+                    <view slot="left" class="l">
+                        <view class='membertext'>
+                            <view class='{{item.sex =="male"? "title" :"female"}}'>{{item.name}}</view>
+                            <view class='title'>{{item.age}}</view>
+                            <view class='telephone' bindtap="openActionSheet" data-phonecall='{{item.phone}}'>{{item.phone}}</view>
+                            <view wx:if="{{item.statusMsg=='未到'}}" class="nostatus">{{item.statusTip}}</view>
+                            <view wx:else class="status">{{item.statusTip}}</view>   
+                        </view>
+                    </view>
+                    <view slot="right" class="r">
+                        <view class='action-bar'>
+                            <image src='/images/sendoffer.png' class="offerimg" wx:if="{{ item.operation && offerjuris}}" bindtap="sendMsg" data-info="sendOffer" data-applyid="{{item.applyId}}"></image>
+                            <image src='/images/sendoffer_dis.png' class="offerimg" wx:else></image>
+                        </view>
+                        <view class='action-bar'>
+                            <image src='/images/reexamine.png' class="offerimg" wx:if="{{ item.operation && Retestjuris}}" bindtap="sendMsg" data-info="invitationToRetest" data-applyid="{{item.applyId}}"></image>
+                            <image src='/images/reexamine_dis.png' class="offerimg" wx:else></image>
+                        </view>
+                        <view class='action-bar'>
+                            <image src='/images/nopass.png' class="offerimg" wx:if="{{ item.operation && notSuijuris}}" bindtap="sendMsg" data-info="notSuitable" data-applyid="{{item.applyId}}"></image>
+                            <image src='/images/nopass_dis.png' class="offerimg" wx:else></image>
+                        </view>
+                    </view>
+                </slide-view>
+            </view>
+            <view class="noslideborad" hidden="{{isstatus=='totalArrived'}}">
+                <view wx:for="{{showmembers}}" wx:key="index">
+                    <view slot="left" class="l">
+                        <view class='membertext'>
+                            <view class='{{item.sex =="male"? "title" :"female"}}'>{{item.name}}</view>
+                            <view class='title'>{{item.age}}</view>
+                            <view class='telephone' bindtap="openActionSheet" data-phonecall='{{item.phone}}'>{{item.phone}}</view>
+                            <view wx:if="{{item.statusMsg=='未到'}}" class="nostatus">{{item.statusTip}}</view>
+                            <view wx:else class="status">{{item.statusTip}}</view>   
+                        </view>
+                    </view>
+                </view>
+            </view>   
+        </scroll-view>
+        
+
+          
+    </view> 
+    
+</view>

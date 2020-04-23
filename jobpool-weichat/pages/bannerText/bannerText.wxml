@@ -1,0 +1,3 @@
+<!--pages/bannerText/bannerText.wxml-->
+
+<rich-text nodes="{{content}}"></rich-text>

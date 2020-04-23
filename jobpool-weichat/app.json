@@ -1,0 +1,88 @@
+{
+  "pages": [
+    "pages/app/app",
+    "pages/Progress/Progress",
+    "pages/richText/richText",
+    "pages/ProgressDetail/ProgressDetail",
+    "pages/recruitDetail/recruitDetail",
+    "pages/personData/personData",
+    "pages/companyInfo/companyInfo",
+    "pages/Diploma/Diploma",
+    "pages/searchResult/searchResult",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/person/person",
+    "pages/AuthorizedLogin/AuthorizedLogin",
+    "pages/companyList/companyList",
+    "pages/login/login",
+    "pages/setPassword/setPassword",
+    "pages/submitSuccess/submitSuccess",
+    "pages/sao/sao",
+    "pages/news/news",
+    "pages/bannerText/bannerText",
+    "pages/search/search",
+    "pages/errorPage/errorPage",
+    "pages/outPage/outPage"
+  ],
+  "subpackages": [
+    {
+      "root": "packageA",
+      "pages": [
+        "pages/educationExp/educationExp",
+        "pages/workExp/workExp",
+        "pages/personAdvantage/personAdvantage",
+        "pages/jobIntent/jobIntent",
+        "pages/wantedJob/wantedJob",
+        "pages/popularCity/popularCity",
+        "pages/preview/preview",
+        "pages/perfectInfomation/perfectInfomation",
+        "pages/talentShare/talentShare",
+        "pages/Employment/Employment"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "职池工作",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置计算"
+    }
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/app/app",
+        "text": "首页",
+        "iconPath": "images/1.1.png",
+        "selectedIconPath": "images/1.png"
+      },
+      {
+        "pagePath": "pages/companyList/companyList",
+        "text": "公司",
+        "iconPath": "images/5.1.png",
+        "selectedIconPath": "images/5.png"
+      },
+      {
+        "pagePath": "pages/Progress/Progress",
+        "text": "求职进展",
+        "iconPath": "images/2.1.png",
+        "selectedIconPath": "images/2.png"
+      },
+      {
+        "pagePath": "pages/person/person",
+        "text": "我的简历",
+        "iconPath": "images/3.1.png",
+        "selectedIconPath": "images/3.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "downloadFile": 20000
+  },
+  "sitemapLocation": "sitemap.json"
+}

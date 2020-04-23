@@ -1,0 +1,42 @@
+<!--pages/talentShare/talentShare.wxml-->
+<view class='Shell'>
+  <image class='bannerImg' src='../../../images/talentBg.png'></image>
+</view>
+<view class='content' wx:for='{{TopcontentList}}' wx:key='index' bindtap='jump' data-id='{{item.job.id}}' data-interviewTime="{{item.job.interviewTime}}" >
+  <view class='information'>
+    <view class='leftCon'>
+      <view class='imgAndTitle'>
+        <image class="tuijianclass" src="../../../images/gongxiang.png" ></image>
+        <image class='companyIcon' src='{{imgIp + item.companyLogo.sourcePath}}'></image>
+        <view class="compan-box">
+          <text class='Title'>{{item.job.name}}</text>
+          <image wx:if="{{item.job.general}}" src="../../../images/pugong.png" class="companypg"></image>
+          <image wx:if="{{item.job.popular}}" src="../../../images/hot.png" class="companyhot"></image>
+          <image wx:if="{{item.job.isRichText}}" src="../../../images/fuwenben.png" class="companypg"></image>
+        </view>
+        <text class='companyName'>{{item.job.companyName}}</text>
+      </view>
+      <view class='require'>{{item.job.area}} | {{item.job.gongzuonianxian}} | {{item.job.xueliyaoqiu}} | 距离 <text style='color:#2EA7E0'>{{item.job.distance}}</text> 公里</view>
+      <view class="wm_reward" wx:if='{{item.job.recommendReward || item.job.recommendedAwardNew}}'>
+        <view class='w_reward' wx:if='{{item.job.femaleReward && item.job.recommendReward}}'>女奖{{item.job.femaleReward}}</view>
+        <view class='m_reward' wx:if='{{item.job.maleReward && item.job.recommendReward}}'>男奖{{item.job.maleReward}}</view>
+        <view class='r_reward' wx:if='{{item.job.recommendedAwardNew && item.job.recommendAmount}}'>推荐{{item.job.recommendAmount}}</view>
+      </view>
+    </view>
+    <view class='rightCon'>
+      <view class='salary' wx:if="{{item.job.salaryMin == item.job.salaryMax}}">{{item.job.salaryMin}}k</view>
+      <view class='salary' wx:else>{{item.job.salaryMin}}k~{{item.job.salaryMax}}k</view>
+      <view class='typeShell'>
+        <text class='types type1' wx:if='{{item.job.type == "online"?true:false}}'>在线直聘</text>
+        <text class='types type2' wx:if='{{item.job.type == "scene"?true:false}}'>现场直面会</text>
+      </view>
+    </view>
+  </view>
+  <view class='welfareShell {{ item.job.femaleReward != null ? "q-cheap" : ""}}'>
+    <text class='welfare' wx:for='{{item.labels}}' wx:key='index' >{{item.text}}</text>
+  </view>
+  <view class='timeAndNumber'>
+    <view class='time'>面试时间：<text>{{item.job.interviewTimeString ==null?'等待通知':item.job.interviewTimeString}}</text></view>
+    <view class='number'>已申请<text> {{item.job.applyNumber}} </text>人</view> 
+  </view>
+</view>

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "zy-slider": "/components/zyslider/zyslider"
+  }
+}

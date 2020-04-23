@@ -1,0 +1,21 @@
+/* pages/pulse/pulse.wxss */
+.animation-element-wrapper {
+    display: flex;
+    width: 100%;
+    padding-top: 150rpx;
+    padding-bottom: 150rpx;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #ffffff;
+  }
+  .animation-element {
+    margin-top: 500rpx;
+    width: 200rpx;
+    text-align: center;
+    opacity: 0;
+    font-weight: bold;
+  }
+  .animation-element image{
+    width: 200rpx;
+    height: 200rpx;
+  }

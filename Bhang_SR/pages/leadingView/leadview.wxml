@@ -1,0 +1,79 @@
+<!--pages/leadingView/leadview.wxml-->
+<view style="width:100%;"> 
+  <customnav backbar="" text="{{navtitle}}" />
+  <view style="height:{{46+statusBarHeight}}px;"></view>
+  <form bindsubmit="formOffer" bindreset="formReset">
+    <view class="title">
+      <image src='/images/erweima.png' class="erweimaimg" bindtap="openGallery" data-id="{{jobId}}"></image>
+      <view class="title-text">
+        <text class="jobname">{{jobName}}</text>
+        <image src='/images/importresult.png' class="importresultimg" bindtap="importresult"></image>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell" bindtap="openDialog">
+          <view class="weui-cell__hd">
+              <view class="weui-label datetimetext">面试时间:</view>
+          </view>
+          <view class="weui-cell__bd" style="text-align:right;margin-right:20rpx;">
+              <text class="datetime">{{interviewTime}} {{showDay}}</text>
+          </view>
+          <view class="weui-cell__ft">
+            <view class="chooseTime"><image src='/images/rightarr.png' class="rightimg"></image></view>
+          </view>
+      </view>
+      <view class="weui-cell" wx:for="{{5}}" wx:key="index">
+          <view class="weui-cell__bd">
+              <input class="weui-input" name="name{{item}}" type="number" maxlength="11" placeholder="请输入面试者手机号" bindfocus="inputFocus" />
+          </view>
+          <view class="weui-cell__ft" hidden="{{item!=warning}}">
+            <icon color="#E64340" size="23" type="warn" role="img"></icon>
+          </view>
+      </view>
+    </view>    
+    <view class="bottom">
+      <button class="weui-btn submitbtn" type="" formType="submit">确 定</button>
+    </view>
+  </form>
+  <!-- 二维码显示 -->
+  <view class="weui-gallery {{opengallery ? 'weui-gallery_show' : ''}}" bindtap="closeGallery">
+    <view class="weui-gallery__img__wrp">
+      <view class="erweimabox">
+        <image src="../../images/qrcodebg2.png" class="qrcodebg">
+            <p class="erweimatitle"><span>{{jobName}}</span>签到码</p>
+            <image class="weui-gallery__img erweimacode" src="data:image/png;base64,{{JobQRcode}}"></image>
+        </image>
+      </view>
+    </view>
+  </view>
+  <!-- 时间模态框 -->
+  <view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
+    <view class="weui-mask" bindtap="closeDialog"></view>
+    <view class="weui-half-screen-dialog" catchtap="stopEvent">
+      <view class="weui-half-screen-dialog__hd" style="height:6em;">
+        <view class="weui-half-screen-dialog__hd__side" style="left:0;">
+          <view bindtap="closeDialog" class="weui-icon-btn weui-icon-btn_close">取消</view>
+        </view>
+        <view class="weui-half-screen-dialog__hd__main">
+          <text class="weui-half-screen-dialog__title">选择面试时间</text>
+        </view>
+        <!-- <view class="weui-half-screen-dialog__hd__side">
+          <view class="weui-icon-btn weui-icon-btn_more">确定</view>
+        </view> -->
+      </view>
+      <view class="weui-half-screen-dialog__bd">
+          <radio-group >
+              <label class="weui-cell weui-cell-item weui-check__label {{item.checked ? 'checkedlabel':''}}" wx:for="{{interviewList}}" wx:key="value" data-value="{{item.index}}" wx:if="{{item.expired}}" bindtap="radioChange">
+                  <radio class="weui-check" value="{{item.index}}" checked="{{item.checked}}"/>
+                  <view class="weui-cell__bd interviewList-item">
+                    <view>{{item.date}}</view>
+                    <view>{{item.time}}</view>
+                    <view>{{item.week}}</view>
+                  </view>
+              </label>
+          </radio-group>
+      </view>
+    </view>
+  </view> 
+</view>
+

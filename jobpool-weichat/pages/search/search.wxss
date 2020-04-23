@@ -1,0 +1,112 @@
+/* pages/search/search.wxss */
+.Shell{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 16rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.searchWord{
+  width: 596rpx;
+  height: 56rpx;
+  margin: 0;
+  padding: 0 20rpx 0 60rpx;
+  background-color: #F8F8F8;
+  z-index: 100;
+  border-radius: 56rpx;
+  font-size: 24rpx;
+  color: #666;
+  box-sizing: border-box;
+  float: left;
+}
+input.searchWord::after{
+  content:"";
+  position:absolute;
+  left:46rpx;
+  top:30rpx;
+  width: 28rpx;
+  height: 28rpx; 
+  background:url("https://shoptour.yangguangqicai.com/Img/search_look.png") left center no-repeat;
+  background-size:100%;
+}
+.placeholder{
+  font-size: 24rpx;
+  line-height: 56rpx;
+  color: #999;
+}
+.cancle{
+  width: 94rpx;
+  height: 56rpx;
+  font-size: 32rpx;
+  color: #2EA7E0;
+  line-height: 56rpx;
+  text-align: right;
+  float: left;
+}
+.history,.hot{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 20rpx 30rpx 0 30rpx;
+  box-sizing: border-box;
+}
+.deleteHistory{
+  width: 32rpx;
+  height: 32rpx;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  float: right;
+}
+.hot{
+  margin-top: 60rpx;
+}
+.historyTitle,.hotTitle{
+  width: 100%;
+  height: 32rpx;
+  margin: 20rpx 0;
+  padding: 0;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #999999;
+}
+.historyIconShell,.hotIconShell{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.historyIcon,.hotIcon{
+  width: max-content;
+  height: 70rpx;
+  margin: 20rpx 20rpx 0 0;
+  padding: 21rpx;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 28rpx;
+  background-color: #F8F8F8;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+  float: left;
+}
+.q-nothing{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.q-nothing image{
+  width: 590rpx;
+  height: 430rpx;
+}
+.q-nothing view{
+  margin-top: 20rpx;
+  font-size:16px;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height:30px;
+}

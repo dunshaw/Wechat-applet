@@ -1,0 +1,221 @@
+/* pages/talentShare/talentShare.wxss */
+page{
+  background-color: #F5F5F5;
+}
+.Shell{
+  width: 100%;
+  height: 500rpx;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.bannerImg{
+  width: 100%;
+  height: 600rpx;
+  position: absolute;
+  top: -100rpx;
+}
+.content{
+  width: 100%;
+  overflow: hidden;
+  margin: 0 0 20rpx 0;
+  padding: 30rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.information{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.leftCon{
+  width: 480rpx;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+.rightCon{
+  width: 210rpx;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+.imgAndTitle{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.compan-box{
+  display: flex;
+}
+.companypg,.companyhot{
+  width: 32rpx;
+  height: 32rpx;
+}
+.companyIcon{
+  width: 88rpx;
+  height: 88rpx;
+  float: left;
+}
+.Title{
+  max-width: 372rpx;
+  height: 36rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0 0 0 20rpx;
+  padding: 0;
+  font-size: 32rpx;
+  color: #333;
+  line-height: 36rpx;
+  font-weight: bold;
+  float: left;
+}
+.companyName{
+  width: 372rpx;
+  height: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 15rpx 0 0 20rpx;
+  padding: 0;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 32rpx;
+  float: left;
+}
+.require{
+  width: 100%;
+  overflow: hidden;
+  margin: 30rpx 0 0 0;
+  padding: 0;
+  font-size: 24rpx;
+  color: #666;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.salary{
+  height: 32rpx;
+  font-size: 26rpx;
+  color: #FF961E;
+  text-align: right;
+  font-weight: bold;
+  line-height: 32rpx;
+  margin-bottom: 15rpx;
+  float: right;
+}
+.typeShell{
+  width: 100%;
+  overflow: hidden;
+  margin: 0 0 15rpx 0;
+  padding: 0;
+}
+.types{
+  width: max-content;
+  font-size: 20rpx;
+  text-align: right;
+  padding: 11rpx;
+  float: right;
+}
+.type1{
+  border: 1px solid #FFAC4C;
+  border-radius: 6rpx;
+  color: #FFAC4C;
+}
+.type2{
+  border: 1px solid #70CC70;
+  border-radius: 6rpx;
+  color: #70CC70;
+}
+.m_reward,.w_reward,.r_reward{
+  /* display: inline-block; */
+  width: 122rpx;
+  font-size: 20rpx;
+  padding: 10rpx 0;
+  box-sizing: border-box;
+  text-align: center;
+  margin-right: 20rpx;
+}
+.m_reward{
+  border: 1px solid #45B3E6;
+  border-radius: 6rpx;
+  color: #45B3E6;
+}
+.w_reward{
+  border: 1px solid #FF6E6D;
+  border-radius: 6rpx;
+  color: #FF6E6D;
+}
+.r_reward{
+  border: 1px solid #FF961E;
+  border-radius: 6rpx;
+  color: #FF961E;
+}
+.welfareShell{
+  width: 480rpx;
+  overflow: hidden;
+  margin: 10rpx 0 0 0;
+  padding: 0 0 30rpx 0;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+.welfare{
+  display: inline-block;
+  width: max-content;
+  /*height: 44rpx;*/
+  overflow: hidden;
+  margin: 0 10rpx 10rpx 0;
+  padding: 10rpx;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 28rpx;
+  background-color: #f8f8f8;
+  border-radius: 6rpx;
+}
+.timeAndNumber{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 30rpx 0 0 0;
+}
+.time{
+  display: inline-block;
+  width: 500rpx;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-size: 24rpx;
+  color: #666;
+  text-align: left;
+}
+.number{
+  display: inline-block;
+  width: 190rpx;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-size: 24rpx;
+  color: #666;
+  text-align: right;
+}
+.time>text,.number>text{
+  color: #2EA7E0;
+}
+.tuijianclass{
+  width: 55rpx;
+  height: 30rpx;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+.m_reward,.w_reward,.r_reward{
+  display: inline-block;
+  margin-top: 10rpx;
+}

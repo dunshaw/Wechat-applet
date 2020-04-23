@@ -1,0 +1,176 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.10.4",
+	"appid": "wxfef0708fa0bed3ef",
+	"projectname": "baohang",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 16,
+			"list": [
+				{
+					"id": -1,
+					"name": "search",
+					"pathName": "pages/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "Progress",
+					"pathName": "pages/Progress/Progress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "recruitDetail",
+					"pathName": "pages/recruitDetail/recruitDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "ProgressDetail",
+					"pathName": "pages/ProgressDetail/ProgressDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "person",
+					"pathName": "pages/person/person",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "personData",
+					"pathName": "pages/personData/personData",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "educationExp",
+					"pathName": "pages/educationExp/educationExp",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "workExp",
+					"pathName": "pages/workExp/workExp",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "personAdvantage",
+					"pathName": "pages/personAdvantage/personAdvantage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "jobIntent",
+					"pathName": "pages/jobIntent/jobIntent",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "wantedJob",
+					"pathName": "pages/wantedJob/wantedJob",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "Diploma",
+					"pathName": "pages/Diploma/Diploma",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "companyInfo",
+					"pathName": "pages/companyInfo/companyInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "searchResult",
+					"pathName": "pages/searchResult/searchResult",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "submitSuccess",
+					"pathName": "pages/submitSuccess/submitSuccess",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/app/app",
+					"pathName": "pages/app/app",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/app/app",
+					"pathName": "pages/app/app",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

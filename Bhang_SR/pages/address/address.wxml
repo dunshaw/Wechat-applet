@@ -1,0 +1,18 @@
+<!--pages/address/address.wxml-->
+<view>
+  <customnav backbar="" text="选择地址" />
+  <view style="height:{{46+statusBarHeight}}px;"></view>
+  <view wx:for="{{address}}" class="addressbox" data-index="index" data-id="{{item.addrId}}" data-lat="{{item.latitude}}" data-fmtAddr="{{item.fmtAddr}}" data-sptAddr="{{item.sptAddr}}" data-lng="{{item.longitude}}" bindtap="selected">
+    <view class="address-top">
+      <h2>{{item.typename}}</h2>
+      <view>
+        <text class="addrtext">{{item.fmtAddr}}</text>
+        <text class="addrtext">{{item.sptAddr?item.sptAddr:''}}</text>
+      </view>
+    </view>
+    <view class="address-bot" hidden="{{!item.show}}">
+        <image src='/images/defindex.png' class="defindex"></image>
+        <text>当前地址</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+/* pages/entryMsg/entryMsg.wxss */
+page{
+  width: 100%;
+  background:rgba(244,244,244,1);
+}
+.submitbtn{
+  position: fixed;
+  bottom: 5%;
+  left: 10%;
+  width: 80%;
+  background:#2EA7E0 ;
+  color: #fff;
+}
+.disabledbtn{
+  background:#ccc ;
+  color: #fff;
+}
+.submitbtn:active{
+  background:#69c0e9 ;
+}
+.datetimepick{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.datetimepick picker{
+  width: 50%;
+}
+.datetimepick .weui-input{
+  font-size: .9em;
+  font-weight: bold;
+  color: #2EA7E0;
+}

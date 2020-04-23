@@ -1,0 +1,5 @@
+/* pages/richText/richText.wxss */
+@import "../../wxParse/wxParse.wxss";
+page{
+  width: 100%;
+}

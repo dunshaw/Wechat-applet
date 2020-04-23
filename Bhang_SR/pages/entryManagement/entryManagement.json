@@ -1,0 +1,16 @@
+{
+  "component": true,
+  "usingComponents": {
+    "customnav": "/components/nav/nav",
+    "van-swipe-cell": "/miniprogram_npm/vant-weapp/swipe-cell/index",
+    "van-button": "/miniprogram_npm/vant-weapp/button/index",
+    "van-radio": "/miniprogram_npm/vant-weapp/radio/index",
+    "van-radio-group": "/miniprogram_npm/vant-weapp/radio-group/index",
+    "van-checkbox": "/miniprogram_npm/vant-weapp/checkbox/index",
+    "van-checkbox-group": "/miniprogram_npm/vant-weapp/checkbox-group/index",
+    "van-loading": "/miniprogram_npm/vant-weapp/loading/index",
+    "mytabbar":"../../custom-tab-bar/index"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle":"dark"
+}

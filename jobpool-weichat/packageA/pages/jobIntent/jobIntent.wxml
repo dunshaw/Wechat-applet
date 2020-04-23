@@ -1,0 +1,28 @@
+<!--pages/jobIntent/jobIntent.wxml-->
+<view class='selectedShell'>
+  <view class='selectedTitle'>已选职位</view>
+  <view class='selectedNub'><text>{{btnArray.length}}</text>/3</view>
+  <view class='selectedBtnShell'>
+    <view class='haveBtn' wx-if="{{btnArray.length > 0}}">
+      <view class='btn' wx:for="{{btnArray}}" wx:key="*this"><view class='btnCon'>{{item.name}}</view><view class='fa fa-close' bindtap='deleteThisBtn' data-index="{{index}}" data-parent="{{item.parentName}}"></view></view>
+    </view>
+    <text class='noBtn' wx:else>请选择期望职位，最多3个</text>
+  </view>
+</view>
+<view class='middleConShell'>
+  <view class='middleLeft'>
+    <scroll-view scroll-y style="height: 100%;">
+      <view class='leftCon {{icon == index?"active":""}}' wx:for="{{firstType}}" wx:key="index" data-value='{{index}}' bindtap='choice'>{{item.type.name}}</view>
+    </scroll-view>
+  </view>
+  <view class='middleRight'>
+    <scroll-view scroll-y style="height: 100%;">
+      <view class='rightModel' wx:for="{{secondType}}" wx:key="index">
+        <view class='modelTitle'>{{item.type.name}}</view>
+        <view class='modelOption' wx:for="{{item.sub}}" wx:key="index" bindtap='selectThisJob' data-id='{{item.type.id}}' data-value='{{item.type.name}}' data-parent='{{firstType[icon].type.name}}' data-parentid='{{firstType[icon].type.id}}'>{{item.type.name}}</view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<view class='keepSelected' bindtap='keepSelected' data-url='wantedJob'>保存</view>
+

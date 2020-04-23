@@ -1,0 +1,89 @@
+/* pages/login/login.wxss */
+.Shell{
+  width: 100%;
+  padding: 0 60rpx;
+  overflow: hidden;
+}
+.headTitleShell{
+  width: 100%;
+  height: 100rpx;
+  margin: 100rpx 0 0 0;
+  position: relative;
+}
+.iconTitle{
+  font-size: 44rpx;
+  color: #333;
+  font-weight: bold;
+  line-height: 100rpx;
+}
+.iconImg{
+  width: 100rpx;
+  height: 100rpx;
+  margin: 0;
+  padding: 0;
+  float: right;
+}
+.inputShell{
+  width: 100%;
+  overflow: hidden;
+  margin: 100rpx 0 0 0; 
+  position: relative;
+}
+.phone{
+  width: 100%;
+  height: 90rpx;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #DDDDDD;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  box-sizing: border-box;
+}
+.yzm{
+  width: 100%;
+  height: 90rpx;
+  padding: 20rpx 200rpx 20rpx 0;
+  border-bottom: 1px solid #DDDDDD;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  box-sizing: border-box;
+}
+.clickGetYzm{
+  width: max-content;
+  font-size: 28rpx;
+  color: #333;
+  position: absolute;
+  bottom: 30rpx;
+  right: 0;
+}
+.submit{
+  width: 100%;
+  height: 88rpx;
+  background-color: #2EA7E0;
+  margin: 100rpx 0 0 0;
+  border-radius: 8rpx;
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 88rpx;
+  text-align: center;
+}
+.q-bottom-agreement{
+  width: 580rpx;
+  position: absolute;
+  bottom: 82rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size:12px;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  line-height:20px;
+}
+.q-bottom-agreement image{
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+.q-useragreement,.q-enterpriseagreement{
+  color: #2EA7E0;
+  margin-left: 10rpx;
+}

@@ -1,0 +1,96 @@
+<!--pages/wantedJob/wantedJob.wxml-->
+<view class='Shell'>
+  <view class='genderModel'>
+    <view class='important'>*</view>
+    <view class='genderTitle'>期望工作地</view>
+    <view class='genderView {{address == "请选择"?"notChoice":""}}' bindtap='openCity'>{{address}}<view class='fa fa-angle-right'></view></view>
+  </view>
+  <view class='genderModel'>
+    <view class='important'>*</view>
+    <view class='genderTitle'>期望行业</view>
+    <view class='genderView {{qiwanghy == "请选择"?"notChoice":""}}' bindtap='openhy'>{{qiwanghy}}<view class='fa fa-angle-right'></view></view>
+  </view>
+  <view class='genderModel'>
+    <view class='important'>*</view>
+    <view class='genderTitle'>期望职位</view>
+    <view class='genderView {{qiwangzhiwei == "请选择"?"notChoice":""}}' bindtap='jump' data-url='jobIntent'>{{qiwangzhiwei}}<view class='fa fa-angle-right'></view></view>
+  </view>
+  <view class='genderModel'>
+    <view class='important'>*</view>
+    <view class='genderTitle'>期望薪资</view>
+    <view class='genderView {{wantSalary == "请选择"?"notChoice":""}}' bindtap='openSalary'>{{wantSalary}}<view class='fa fa-angle-right'></view></view>
+  </view>
+</view>
+
+<view>
+  <view class='nameModel'>
+    <view class='important'>*</view>
+    <view class='nameTitle'>求职状态</view>
+    <view class='nameView {{userStatus == "请选择"?"notChoice":""}}' bindtap='openStatus'>{{userStatus}}<view class='fa fa-angle-right'></view></view>
+  </view>
+</view>
+
+
+<!--现居住地选择-->
+<view class='address-mask animated fadeIn' wx:if="{{condition}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureValue}}" bindchange="bindChangeCity">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openCity_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openCity_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{provinces}}" wx:key="{{index}}" class='item-column'>{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{citys}}" wx:key="{{index}}" class='item-column'>{{item.name}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+
+<!-- 期望行业 -->
+<view class='address-mask animated fadeIn' wx:if="{{hyisShow}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{truehy}}" bindchange="bindChangeHY">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openHY_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openHY_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{hyList}}" wx:key="index" class='item-column'>{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+
+<!--期望薪资选择-->
+<view class='address-mask animated fadeIn' wx:if="{{showSalary}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureSalary}}" bindchange="bindChangeSalary">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openSalary_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openSalary_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{minSalary}}" wx:key="index" class='item-column'>{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{maxSalary}}" wx:key="index" class='item-column'>{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+<!--求职状态选择-->
+<view class='address-mask animated fadeIn' wx:if="{{showStatus}}">
+  <picker-view class='picker-view animated fadeInUp' indicator-style="height: 50px;" value="{{sureStatus}}" bindchange="bindChangeStatus">
+    <view class='operation'>
+      <text class='cancel-btn' catchtap='openStatus_cancle'>取消</text>
+      <text class='comfirm-btn' catchtap='openStatus_sure'>确定</text>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{statusList}}" wx:key="index" class='item-column'>{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+
+
+
+<view class="q-wantedbottom">
+  <view class='keepSelected' bindtap='keepSelected' data-url='person'>保存</view>
+  <view class="q-skip" bindtap="skip" wx:if="{{isone}}">跳过</view>
+</view>

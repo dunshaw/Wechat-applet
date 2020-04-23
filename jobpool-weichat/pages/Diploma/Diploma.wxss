@@ -1,0 +1,157 @@
+/* pages/Diploma/Diploma.wxss */
+.diplomaTitle{
+  width: 100%;
+  overflow: hidden;
+  margin: 60rpx 0;
+  padding: 0 30rpx;
+  font-size: 32rpx;
+  color: #333;
+  line-height: 32rpx;
+  text-align: center;
+  box-sizing: border-box;
+}
+.diplomaImg{
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 60rpx;
+  box-sizing: border-box;
+}
+.diplomaMask{
+  width: 630rpx;
+  height: 450rpx;
+  margin: 0;
+  padding: 0;
+  border-radius: 10rpx;
+}
+.rules{
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  margin: 60rpx 0 0 0;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 56rpx;
+}
+
+.contactServ{
+  width: 100%;
+  overflow: hidden;
+  margin: 0 0 40rpx 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+}
+.contactServ>text{
+  color: #2EA7E0;
+}
+.submitForm{
+  width: 690rpx;
+  height: 80rpx;
+  margin: 30rpx;
+  padding: 0;
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #2EA7E0;
+  border-radius: 10rpx;
+}
+.del{
+   width: 690rpx;
+  height: 80rpx;
+  margin: 30rpx;
+  padding: 0;
+  font-size: 32rpx;
+  color: #FF4C4C;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10rpx;
+}
+.q-authentication{
+  /* display: flex;
+  justify-content: center; */
+  margin: 0 auto;
+  text-align: center;
+}
+.q-hourglass{
+  width: 140rpx;
+  height: 140rpx;
+}
+.q-authen-title{
+  font-size:16px;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+  line-height:25px;
+}
+.q-authen-titletps{
+  font-size:14px;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  line-height:20px;
+}
+.q-authen-photo{
+  position: relative;
+}
+.q-authen-photo view{
+  width: 490rpx;
+  height: 88rpx;
+  font-size:14px;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:88rpx;
+  background:rgba(0,0,0,.5);
+  border-radius:0px 0px 4px 4px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.q-authen-photo image{
+  width: 436rpx;
+  height: 312rpx;
+  margin-top: 100rpx;
+  padding: 0;
+}
+.q-failed,.q-success{
+  margin: 80rpx auto 0;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  text-align: center;
+}
+.q-failed image,.q-success image{
+  width: 140rpx;
+  height: 140rpx;
+}
+.q-failed-title,.q-success-title{
+  font-size:16px;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+  line-height:25px;
+}
+.q-failed-con{
+  margin: 0 auto;
+  width: 590rpx;
+  display: flex;
+  justify-content:center;
+  font-size:14px;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height:20px;
+}
+.q-failed-con-content{
+  color: #FF4C4C;
+}

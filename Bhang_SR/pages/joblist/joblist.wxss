@@ -1,0 +1,51 @@
+/* pages/joblist/joblist.wxss */
+.searchbar{
+  width: 100%;
+  height: 110rpx;
+  background: #fff;
+  position: relative;
+}
+.searchbar-icon{
+  position: absolute;
+  top: 45rpx;
+  left: 5%;
+  }
+.searchbar-input{
+  height: 70rpx;
+  background: #F4F4F4;
+  width: 86%;
+  margin: auto;
+  border-radius: 4rpx;
+  text-align: center;
+  padding-left: 50rpx;
+}
+.joblist{
+  background: #fafafa;
+  width: 100%;
+}
+.job-item{
+  width: 100%;
+  height: 102rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2% 0 5%;
+  box-sizing: border-box;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 10rpx;
+}
+.job-item-right{display: flex;}
+.companytext{
+  color:#999 ;
+}
+.chooseplace{
+  width: 50rpx;
+  height: 50rpx;
+  text-align: center;
+  margin-left: 10rpx;
+}
+.rightimg{
+  width: 12rpx;
+  height: 24rpx;
+
+}

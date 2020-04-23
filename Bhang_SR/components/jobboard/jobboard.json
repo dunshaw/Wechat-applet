@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "slide-view": "/miniprogram_npm/miniprogram-slide-view/index"
+  }
+}

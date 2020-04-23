@@ -1,0 +1,13 @@
+<!--pages/AuthorizedLogin/AuthorizedLogin.wxml-->
+<view class="q-loginlogo">
+  <image src="../../images/logo.png"></image>
+</view>
+<view>
+    <button class="q-weixinlogin" open-type="getPhoneNumber" bindtap="weixinlogin" bindgetphonenumber="getPhoneNumber">
+    <image src="../../images/weixin.png"></image>
+    微信用户快捷登录</button>
+  <!-- <view class="q-phonelogin" bindtap="phonelogin">
+    <image src="../../images/phone.png"></image>
+    <text>手机号登录/注册</text>
+  </view> -->
+</view>

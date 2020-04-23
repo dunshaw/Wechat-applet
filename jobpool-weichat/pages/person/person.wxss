@@ -1,0 +1,213 @@
+/* pages/person/person.wxss */
+.Shell{
+  width: 100%;
+  overflow: hidden;
+  margin: 0 0 30rpx 0;
+  padding: 0 30rpx;
+}
+.q-preview{
+  text-align: right;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(46,167,224,1);
+}
+.model{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 80rpx 0;
+  border-bottom: 1px solid #DDD;
+}
+.nameShell{
+  width: 530rpx;
+  height: 90rpx;
+  margin: 0 40rpx 0 0;
+  padding: 0;
+  float: left;
+}
+.personImg{
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 30rpx;
+  padding: 0;
+  border-radius: 50%;
+  float: left;
+}
+.name{
+  height: 52rpx;
+  font-size: 48rpx;
+  line-height: 52rpx;
+  color: #333;
+  font-weight: bold;
+}
+.name>.fa{
+  font-size: 28rpx;
+  margin-left: 20rpx;
+  vertical-align: middle;
+}
+.basicInfo{
+  height: 24rpx;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  color: #999;
+  margin-top: 14rpx;
+}
+.Title{
+  width: 100%;
+  height: 42rpx;
+  margin: 0;
+  padding: 0;
+  font-size: 36rpx;
+  line-height: 42rpx;
+  color: #333;
+  font-weight: bold;
+}
+.titleIcon{
+  width: 19rpx;
+  height: 28rpx;
+  vertical-align: middle;
+  margin: 0 20rpx 0 0;
+}
+.advantage{
+  display: -webkit-box;
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 80rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.intention{
+  max-width: 450rpx;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 42rpx;
+  float: right;
+  font-weight: normal;
+  overflow: hidden;
+  margin-right: 10rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.Title>.fa{
+  float: right;
+  font-size: 42rpx;
+  color: #999;
+  vertical-align: middle;
+}
+.add{
+  font-size: 28rpx;
+  color: #2EA7E0;
+  line-height: 42rpx;
+  float: right;
+  font-weight: normal;
+}
+.experienceShell{
+  width: 100%;
+  overflow: hidden;
+  margin: 80rpx 0 0 0;
+  padding: 0;
+}
+
+.experience{
+  width: 100%;
+  overflow: hidden;
+  margin: 0 0 40rpx 0;
+  padding: 0;
+}
+.experience:last-child{
+  margin: 0;
+}
+.experienceCom{
+  width: 440rpx;
+  margin: 0 20rpx 0 0;
+  padding: 0;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: left;
+}
+.experienceTime{
+  font-size: 24rpx;
+  color: #666;
+  line-height: 28rpx;
+  float: right;
+  overflow: hidden;
+  margin-right: 10rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.experience>.fa{
+  float: right;
+  font-size: 28rpx;
+  color: #999;
+  vertical-align: middle;
+}
+.educationCom{
+  width: 440rpx;
+  overflow: hidden;
+  margin: 0 20rpx 0 0;
+  padding: 0;
+  float: left;
+}
+.educationCom_1{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: left;
+}
+.educationCom_2{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.educationTime{
+  font-size: 24rpx;
+  color: #666;
+  line-height: 28rpx;
+  float: right;
+  overflow: hidden;
+  margin-right: 10rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.Authentication>.intention{
+  color: #06C144;
+}
+.login{
+  width: 240rpx;
+  text-align: center;
+  margin: 0 auto;
+  font-size:16px;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height:30px;
+  border: 2rpx solid rgba(102,102,102,1);
+  border-radius: 30rpx;
+}
+.nameright{
+  color: #999;
+  font-size: 42rpx;
+  position: absolute;
+  right: 0;
+}

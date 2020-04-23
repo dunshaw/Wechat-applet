@@ -1,0 +1,4 @@
+<view>
+  <image class='errorimg' src='{{imgsrc}}'></image>
+  <p class="errortext">{{errortext}}</p>
+</view>
